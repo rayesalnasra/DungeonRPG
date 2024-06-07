@@ -59,10 +59,20 @@ public class PlayerManager implements Serializable {
                 oos.writeObject(playerInventory); // Serialize the player inventory object
             }
             
+            // Update the player inventory in the database
             String updateInventory = "UPDATE PlayerInventory SET inventory = ? WHERE id = 1";
             try (PreparedStatement pstmt = conn.prepareStatement(updateInventory)) {
                 pstmt.setBytes(1, baos.toByteArray()); // Set the serialized inventory as a byte array
                 int rowsAffected = pstmt.executeUpdate(); // Execute the update
+            
+                // If no rows were updated, insert the inventory as a new row
+                if (rowsAffected == 0) {
+                    String insertInventory = "INSERT INTO PlayerInventory (id, inventory) VALUES (1, ?)";
+                    try (PreparedStatement pstmtInsert = conn.prepareStatement(insertInventory)) {
+                        pstmtInsert.setBytes(1, baos.toByteArray()); // Set the byte array in the insert statement
+                        pstmtInsert.executeUpdate(); // Execute the insert
+                    }
+                }
             }
         } catch (SQLException | IOException e) {
             // Handle any exceptions that occur during the save process
