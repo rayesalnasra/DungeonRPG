@@ -16,7 +16,7 @@ import java.sql.Statement;
 import java.io.ByteArrayOutputStream;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
+import java.io.ByteArrayInputStream;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -160,8 +160,13 @@ public class UserInterface {
                 if (rs.next()) {
                     // Retrieve the byte array from the "game" column
                     byte[] gameData = rs.getBytes("game");
+                    
+                    // Use ByteArrayInputStream and ObjectInputStream to deserialize the game data
+                    try (ByteArrayInputStream bais = new ByteArrayInputStream(gameData);
+                         ObjectInputStream ois = new ObjectInputStream(bais)) {
                 }
-                }
+                }    
+                
             } catch (SQLException | IOException | ClassNotFoundException e) {
             // Handle any exceptions that occur during the load process
             System.out.println("There has been an error, the game failed to load");
