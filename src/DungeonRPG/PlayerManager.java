@@ -29,14 +29,23 @@ public class PlayerManager implements Serializable {
     }
     
     // Saves the player's inventory to a file
-    private void savePlayerInventory() {
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("PlayerInventory.sav"))) {
-            oos.writeObject(playerInventory);
-        } catch (IOException e) {
+//    private void savePlayerInventory() {
+//        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("PlayerInventory.sav"))) {
+//            oos.writeObject(playerInventory);
+//        } catch (IOException e) {
+//            System.out.println("Error saving player inventory: " + e.getMessage());
+//        }
+//    }
+
+    public void savePlayerInventory() {
+        try (Connection conn = connect()) {
+            conn.setAutoCommit(false); // Start transaction
+            
+        } catch (SQLException | IOException e) {
+            // Handle any exceptions that occur during the save process
             System.out.println("Error saving player inventory: " + e.getMessage());
         }
     }
-
     // Loads the player's inventory from a file
     private ItemList loadPlayerInventory() {
         File file = new File("PlayerInventory.sav");
