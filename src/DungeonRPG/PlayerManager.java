@@ -109,9 +109,9 @@ public class PlayerManager implements Serializable {
             try (PreparedStatement pstmt = conn.prepareStatement(selectInventory);
              ResultSet rs = pstmt.executeQuery()) {
             // Check if a record for player inventory exists
-            if (rs.next()) {
-                // If a record is found, retrieve the inventory data
-                byte[] inventoryData = rs.getBytes("inventory");
+                if (rs.next()) {
+                    // If a record is found, retrieve the inventory data
+                    byte[] inventoryData = rs.getBytes("inventory");
                 
                 // Deserialize the inventory data
                 try (ByteArrayInputStream bais = new ByteArrayInputStream(inventoryData);
@@ -123,7 +123,7 @@ public class PlayerManager implements Serializable {
                 System.out.println("No player inventory found in the database.");
                 return new ItemList(); // Return an empty ItemList
             }
-            
+         }  
        } catch (SQLException | IOException | ClassNotFoundException e) {
             // Handle any exceptions that occur during the load process
             System.out.println("Error loading player inventory: " + e.getMessage());
