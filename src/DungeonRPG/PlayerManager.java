@@ -1,5 +1,8 @@
 package DungeonRPG;
 import java.io.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -20,6 +23,11 @@ public class PlayerManager implements Serializable {
         this.playerInventory = loadPlayerInventory(); // Load player's inventory upon initialization
     }
 
+    private static Connection connect() throws SQLException {
+        String url = "jdbc:derby:DungeonRPGDatabase;create=true"; // Adjust the URL as needed
+        return DriverManager.getConnection(url);
+    }
+    
     // Saves the player's inventory to a file
     private void savePlayerInventory() {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("PlayerInventory.sav"))) {
