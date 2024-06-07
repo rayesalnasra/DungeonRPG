@@ -89,13 +89,14 @@ public class TextAdventure implements java.io.Serializable {
      * Prints the introduction message for the game.
      * It displays the initial location and prompts the user for input.
      */
-    public void printIntroduction() {
+    public String printIntroduction() {
         String introductionMessage = "As you tumble down a mysterious rabbit hole, you land softly in\n"
                 + "an underground cavern permeated with the scent of ancient troll dwellings.\n"
-                + "Which direction shall you venture? (Or type 'quit' to " + "abandon your journey) \n";
-        String moveInstruction = "Enter 'move' followed by the direction you wish " + "to go (north, south, west, est): \n";
+                + "Which direction shall you venture? (Or type 'quit' to abandon your journey)\n";
+        String moveInstruction = "Enter 'move' followed by the direction you wish to go (north, south, west, east):\n";
 
-        System.out.println(introductionMessage + moveInstruction);
-        System.out.println(player.getPlayerLocation().describeArea());
+        String description = player.getPlayerLocation().describeArea();
+
+        return introductionMessage + moveInstruction + description;
     }
 }
