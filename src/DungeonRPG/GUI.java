@@ -97,6 +97,11 @@ public class GUI extends javax.swing.JFrame {
         });
 
         exitInventory.setText("EXIT INVENTORY");
+        exitInventory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitInventoryActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -201,6 +206,10 @@ public class GUI extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, gameOutput, "Game Message", JOptionPane.INFORMATION_MESSAGE);
         checkInventoryActionPerformed(evt);
     }//GEN-LAST:event_dropItemActionPerformed
+
+    private void exitInventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitInventoryActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_exitInventoryActionPerformed
     
     private void setTextArea(String output) {
         textArea.setText(output);
