@@ -189,7 +189,7 @@ public class InputParser implements java.io.Serializable {
 
         if (validCommands.containsKey(command) && validTargets.containsKey(target)) {
             if (validDirections.containsKey(target) && command.equals("move")) {
-                game.movePlayerTo(target);
+                message = game.movePlayerTo(target);
             }
 
             if (validItems.containsKey(target) && (command.equals("take") || command.equals("drop"))) {
@@ -201,11 +201,11 @@ public class InputParser implements java.io.Serializable {
             }
 
             if (command.equals("observe") && target.equals("area")) {
-                playerManager.observePlayerLocation();
+                message = playerManager.observePlayerLocation();
             }
 
             if (command.equals("check") && target.equals("inventory")) {
-                playerManager.checkPlayerInventory();
+                message = playerManager.checkPlayerInventory();
             }
         }
 
