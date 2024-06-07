@@ -207,6 +207,9 @@ public class UserInterface {
                     // If the count is greater than 0, a saved game exists
                     System.out.println("A saved game was found.");
                     System.out.print("Do you want to keep the save (y/n)? ");
+                    
+                    // Read user input to decide whether to keep or delete the saved game
+                    userInput = inputReader.readLine();
             }
                 
         } catch (SQLException e) {
