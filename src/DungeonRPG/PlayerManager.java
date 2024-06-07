@@ -83,19 +83,31 @@ public class PlayerManager implements Serializable {
             System.out.println("Error saving player inventory: " + e.getMessage());
         }
     }
+    
     // Loads the player's inventory from a file
+//    private ItemList loadPlayerInventory() {
+//        File file = new File("PlayerInventory.sav");
+//        if (!file.exists()) {
+//            return new ItemList(); // Return an empty inventory if file doesn't exist
+//        }
+//
+//        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file))) {
+//            return (ItemList) ois.readObject();
+//        } catch (IOException | ClassNotFoundException e) {
+//            System.out.println("Error loading player inventory: " + e.getMessage());
+//            return null;
+//        }
+//    }
+    
     private ItemList loadPlayerInventory() {
-        File file = new File("PlayerInventory.sav");
-        if (!file.exists()) {
-            return new ItemList(); // Return an empty inventory if file doesn't exist
-        }
-
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file))) {
-            return (ItemList) ois.readObject();
-        } catch (IOException | ClassNotFoundException e) {
+       try (Connection conn = connect()) {
+        // Retrieve the player inventory from the database
+            String selectInventory = "SELECT inventory FROM PlayerInventory WHERE id = 1";
+       } catch (SQLException | IOException | ClassNotFoundException e) {
+            // Handle any exceptions that occur during the load process
             System.out.println("Error loading player inventory: " + e.getMessage());
-            return null;
-        }
+            return null; // Return null to indicate failure
+        }  
     }
 
     // Moves an item from one ItemList to another
