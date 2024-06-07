@@ -169,15 +169,19 @@ public class UserInterface {
                         game = (TextAdventure) ois.readObject();
                         System.out.println("Game has loaded successfully!");
                     }
-                }    
+                    
+                } else {
+                    // If no game state is found, inform the user
+                    System.out.println("No game state found in the database.");
+                }
+            }    
                 
             } catch (SQLException | IOException | ClassNotFoundException e) {
-            // Handle any exceptions that occur during the load process
-            System.out.println("There has been an error, the game failed to load");
-            System.out.println(e.getClass() + ": " + e.getMessage());
+                // Handle any exceptions that occur during the load process
+                System.out.println("There has been an error, the game failed to load");
+                System.out.println(e.getClass() + ": " + e.getMessage());
             }
          }
-       }
 
     /**
      * The main method is the entry point of the application.
