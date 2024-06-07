@@ -9,12 +9,14 @@ package DungeonRPG;
  * @author billg
  */
 public class GUI extends javax.swing.JFrame {
-
+    private static TextAdventure game;
+    
     /**
      * Creates new form GUI
      */
     public GUI() {
         initComponents();
+        this.game = new TextAdventure();
     }
 
     /**
