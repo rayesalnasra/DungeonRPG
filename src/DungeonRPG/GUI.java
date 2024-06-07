@@ -238,6 +238,7 @@ public class GUI extends javax.swing.JFrame {
 
         String gameOutput = game.runCommand("Take " + input);
         JOptionPane.showMessageDialog(this, gameOutput, "Game Message", JOptionPane.INFORMATION_MESSAGE);
+        exitInventoryActionPerformed(evt);
     }//GEN-LAST:event_takeItemActionPerformed
     
     private void setTextArea(String output) {
