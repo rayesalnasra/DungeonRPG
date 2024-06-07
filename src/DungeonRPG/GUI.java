@@ -43,6 +43,7 @@ public class GUI extends javax.swing.JFrame {
         checkInventory = new javax.swing.JButton();
         dropItem = new javax.swing.JButton();
         exitInventory = new javax.swing.JButton();
+        takeItem = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Dungeon RPG");
@@ -103,6 +104,8 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        takeItem.setText("TAKE ITEM");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -135,7 +138,10 @@ public class GUI extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(exitInventory)
-                        .addContainerGap())))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(takeItem)
+                        .addGap(155, 155, 155))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -154,7 +160,9 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(moveWest))
                 .addGap(30, 30, 30)
                 .addComponent(moveSouth)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addComponent(takeItem)
+                .addGap(17, 17, 17)
                 .addComponent(exitInventory)
                 .addGap(26, 26, 26))
         );
@@ -263,6 +271,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton moveNorth;
     private javax.swing.JButton moveSouth;
     private javax.swing.JButton moveWest;
+    private javax.swing.JButton takeItem;
     private javax.swing.JTextArea textArea;
     // End of variables declaration//GEN-END:variables
 }

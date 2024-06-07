@@ -67,6 +67,10 @@
                       <Component id="exitInventory" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="takeItem" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="155" max="-2" attributes="0"/>
+                  </Group>
               </Group>
           </Group>
       </Group>
@@ -90,7 +94,9 @@
               </Group>
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Component id="moveSouth" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="70" max="32767" attributes="0"/>
+              <EmptySpace pref="31" max="32767" attributes="0"/>
+              <Component id="takeItem" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
               <Component id="exitInventory" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
           </Group>
@@ -169,6 +175,11 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="exitInventoryActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="takeItem">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="TAKE ITEM"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
