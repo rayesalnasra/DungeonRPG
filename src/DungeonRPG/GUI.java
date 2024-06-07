@@ -41,6 +41,7 @@ public class GUI extends javax.swing.JFrame {
         moveWest = new javax.swing.JButton();
         checkInventory = new javax.swing.JButton();
         dropItem = new javax.swing.JButton();
+        exitInventory = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Dungeon RPG");
@@ -94,6 +95,8 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        exitInventory.setText("EXIT INVENTORY");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -112,15 +115,20 @@ public class GUI extends javax.swing.JFrame {
                                 .addGroup(layout.createSequentialGroup()
                                     .addGap(74, 74, 74)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(moveSouth)
                                         .addGroup(layout.createSequentialGroup()
                                             .addComponent(moveNorth)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(dropItem)
-                                            .addGap(10, 10, 10))))))
+                                            .addGap(10, 10, 10))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(moveSouth)
+                                            .addGap(0, 0, Short.MAX_VALUE))))))
                         .addGap(17, 17, 17))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(checkInventory)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(exitInventory)
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -140,7 +148,9 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(moveWest))
                 .addGap(30, 30, 30)
                 .addComponent(moveSouth)
-                .addContainerGap(118, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                .addComponent(exitInventory)
+                .addGap(26, 26, 26))
         );
 
         pack();
@@ -233,6 +243,7 @@ public class GUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton checkInventory;
     private javax.swing.JButton dropItem;
+    private javax.swing.JButton exitInventory;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton moveEast;
     private javax.swing.JButton moveNorth;
