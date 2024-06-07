@@ -13,6 +13,7 @@ import java.nio.file.StandardCopyOption;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.io.ByteArrayOutputStream;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -78,6 +79,11 @@ public class UserInterface {
             if (!"X0Y32".equals(e.getSQLState())) {
                 throw e;  // Re-throw other SQL errors
             }
+        }
+            
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        try (ObjectOutputStream oos = new ObjectOutputStream(baos)) {
+            oos.writeObject(game);  // Convert game object to byte array
         }    
             
         } catch (SQLException | IOException e) {
