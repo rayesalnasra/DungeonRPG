@@ -170,6 +170,10 @@ public class UserInterface {
                         System.out.println("Game has loaded successfully!");
                     }
                     
+                    // Load the player inventory
+                    PlayerManager playerManager = new PlayerManager(game);
+                    playerManager.loadInventory();
+                    
                 } else {
                     // If no game state is found, inform the user
                     System.out.println("No game state found in the database.");
