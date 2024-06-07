@@ -3,7 +3,7 @@ import java.io.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
+import java.sql.Statement;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -40,7 +40,17 @@ public class PlayerManager implements Serializable {
     public void savePlayerInventory() {
         try (Connection conn = connect()) {
             conn.setAutoCommit(false); // Start transaction
-            
+            // Ensure the PlayerInventory table exists
+            try (Statement stmt = conn.createStatement()) {
+                // SQL statement to create the PlayerInventory table if it doesn't exist
+                String createInventoryTable = "CREATE TABLE PlayerInventory (id INT PRIMARY KEY, inventory BLOB)";
+                stmt.executeUpdate(createInventoryTable); // Execute the SQL statement
+            } catch (SQLException e) {
+                // If the table already exists, ignore the error with SQLState "X0Y32"
+                if (!e.getSQLState().equals("X0Y32")) {
+                    throw e; // Re-throw other SQL errors
+                }
+            }
         } catch (SQLException | IOException e) {
             // Handle any exceptions that occur during the save process
             System.out.println("Error saving player inventory: " + e.getMessage());
