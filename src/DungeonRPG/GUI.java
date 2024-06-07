@@ -4,6 +4,9 @@
  */
 package DungeonRPG;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,6 +25,17 @@ public class GUI extends javax.swing.JFrame {
         setTextArea(game.printIntroduction());
         dropItem.setVisible(false);
         exitInventory.setVisible(false);
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                onExit();    
+            }
+            
+        });
+        
+    }
+    public void onExit(){
+        quitGameActionPerformed(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, null));
     }
 
     /**
@@ -46,7 +60,7 @@ public class GUI extends javax.swing.JFrame {
         takeItem = new javax.swing.JButton();
         quitGame = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Dungeon RPG");
         setPreferredSize(new java.awt.Dimension(600, 500));
         setResizable(false);
