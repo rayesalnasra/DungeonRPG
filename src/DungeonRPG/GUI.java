@@ -34,6 +34,7 @@ public class GUI extends javax.swing.JFrame {
         textArea = new javax.swing.JTextArea();
         moveNorth = new javax.swing.JButton();
         moveSouth = new javax.swing.JButton();
+        moveEast = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Dungeon RPG");
@@ -59,6 +60,13 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        moveEast.setText("MOVE EAST");
+        moveEast.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                moveEastActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -73,6 +81,10 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(moveSouth)
                             .addComponent(moveNorth))))
                 .addGap(17, 17, 17))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(229, 229, 229)
+                .addComponent(moveEast)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -81,7 +93,9 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
                 .addComponent(moveNorth)
-                .addGap(80, 80, 80)
+                .addGap(28, 28, 28)
+                .addComponent(moveEast)
+                .addGap(30, 30, 30)
                 .addComponent(moveSouth)
                 .addContainerGap(118, Short.MAX_VALUE))
         );
@@ -96,6 +110,10 @@ public class GUI extends javax.swing.JFrame {
     private void moveSouthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moveSouthActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_moveSouthActionPerformed
+
+    private void moveEastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moveEastActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_moveEastActionPerformed
     
     private void setTextArea(String output) {
         textArea.setText(output);
@@ -138,6 +156,7 @@ public class GUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton moveEast;
     private javax.swing.JButton moveNorth;
     private javax.swing.JButton moveSouth;
     private javax.swing.JTextArea textArea;
