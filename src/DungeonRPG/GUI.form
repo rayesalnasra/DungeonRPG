@@ -34,7 +34,10 @@
                   <Component id="jScrollPane1" min="-2" pref="558" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
-                      <Component id="moveNorth" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="moveSouth" min="-2" max="-2" attributes="0"/>
+                          <Component id="moveNorth" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
@@ -48,7 +51,9 @@
               <Component id="jScrollPane1" min="-2" pref="177" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
               <Component id="moveNorth" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="220" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
+              <Component id="moveSouth" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="118" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -76,6 +81,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="moveNorthActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="moveSouth">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="MOVE SOUTH"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="moveSouthActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
