@@ -113,6 +113,11 @@ public class GUI extends javax.swing.JFrame {
         });
 
         quitGame.setText("QUIT GAME");
+        quitGame.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quitGameActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -248,6 +253,19 @@ public class GUI extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, gameOutput, "Game Message", JOptionPane.INFORMATION_MESSAGE);
         exitInventoryActionPerformed(evt);
     }//GEN-LAST:event_takeItemActionPerformed
+
+    private void quitGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitGameActionPerformed
+        // TODO add your handling code here:
+        String message = "Do you want to save the game before quitting?";
+        int option = JOptionPane.showConfirmDialog(this, message, "Quit Game", JOptionPane.YES_NO_CANCEL_OPTION);
+
+        if (option == JOptionPane.YES_OPTION) {
+             // add save game function here
+        } else if (option == JOptionPane.CANCEL_OPTION) {
+            return; // Cancel quitting the game
+        }
+        System.exit(0); // Quit the application
+    }//GEN-LAST:event_quitGameActionPerformed
     
     private void setTextArea(String output) {
         textArea.setText(output);
