@@ -15,6 +15,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.io.ByteArrayOutputStream;
 import java.sql.PreparedStatement;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -171,25 +172,35 @@ public class UserInterface {
         // Prints the game introduction
         game.printIntroduction();
 
-        // Check if Adv.sav exists
-        File advSave = new File("Adv.sav");
-        File playerInventorySave = new File("PlayerInventory.sav");
-        File playerInventorySaved = new File("PlayerInventorySaved.sav");
-
-        // If Adv.sav does not exist and PlayerInventory.sav exists, delete PlayerInventory.sav
-        if (!advSave.exists() && playerInventorySave.exists()) {
-            playerInventorySave.delete();
+//        // Check if Adv.sav exists
+//        File advSave = new File("Adv.sav");
+//        File playerInventorySave = new File("PlayerInventory.sav");
+//        File playerInventorySaved = new File("PlayerInventorySaved.sav");
+//
+//        // If Adv.sav does not exist and PlayerInventory.sav exists, delete PlayerInventory.sav
+//        if (!advSave.exists() && playerInventorySave.exists()) {
+//            playerInventorySave.delete();
+//        }
+//
+//        // If PlayerInventorySaved.sav exists, delete PlayerInventory.sav
+//        if (playerInventorySaved.exists()) {
+//            playerInventorySave.delete();
+//        }
+//
+//        // If Adv.sav and PlayerInventory.sav exist, rename PlayerInventory.sav to PlayerInventorySaved.sav
+//        if (advSave.exists() && playerInventorySave.exists()) {
+//            playerInventorySave.renameTo(playerInventorySaved);
+//        }
+        
+        // Check if a saved game exists
+        try (Connection conn = connect()) {
+            // SQL query to count the number of entries in GameState where id is 1
+            String selectGame = "SELECT COUNT(*) FROM GameState WHERE id = 1";
+        } catch (SQLException e) {
+            // If an SQL error occurs, print the error message
+            System.out.println("Failed to check for saved game: " + e.getMessage());
         }
 
-        // If PlayerInventorySaved.sav exists, delete PlayerInventory.sav
-        if (playerInventorySaved.exists()) {
-            playerInventorySave.delete();
-        }
-
-        // If Adv.sav and PlayerInventory.sav exist, rename PlayerInventory.sav to PlayerInventorySaved.sav
-        if (advSave.exists() && playerInventorySave.exists()) {
-            playerInventorySave.renameTo(playerInventorySaved);
-        }
 
         // Enters the main game loop
         while (true) {
