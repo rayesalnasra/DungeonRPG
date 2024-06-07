@@ -80,12 +80,21 @@ public class UserInterface {
                 throw e;  // Re-throw other SQL errors
             }
         }
-            
+        
+        //Create a ByteArrayOutputStream to hold the serialized game object
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         try (ObjectOutputStream oos = new ObjectOutputStream(baos)) {
             oos.writeObject(game);  // Convert game object to byte array
         }    
-            
+        
+        // Try to update the game state in the GameState table
+        String updateGame = "UPDATE GameState SET game = ? WHERE id = 1";
+        try (PreparedStatement pstmt = conn.prepareStatement(updateGame)) {
+            pstmt.setBytes(1, baos.toByteArray());  // Set the game state byte array
+            int rowsAffected = pstmt.executeUpdate();  // Attempt to update
+        
+        
+        
         } catch (SQLException | IOException e) {
             // Handle any exceptions that occur during the save process
             System.out.println("There has been an error, the game failed to save");
