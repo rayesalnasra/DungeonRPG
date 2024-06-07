@@ -21,6 +21,7 @@ public class GUI extends javax.swing.JFrame {
         this.game = new TextAdventure();
         setTextArea(game.printIntroduction());
         dropItem.setVisible(false);
+        exitInventory.setVisible(false);
     }
 
     /**
