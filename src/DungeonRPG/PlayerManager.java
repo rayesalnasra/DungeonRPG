@@ -74,6 +74,10 @@ public class PlayerManager implements Serializable {
                     }
                 }
             }
+            
+            conn.commit(); // Commit the transaction to save changes
+            System.out.println("Player inventory saved successfully!"); // Inform the user of success
+            
         } catch (SQLException | IOException e) {
             // Handle any exceptions that occur during the save process
             System.out.println("Error saving player inventory: " + e.getMessage());
