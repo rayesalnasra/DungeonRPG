@@ -15,6 +15,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.io.ByteArrayOutputStream;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -196,6 +197,18 @@ public class UserInterface {
         try (Connection conn = connect()) {
             // SQL query to count the number of entries in GameState where id is 1
             String selectGame = "SELECT COUNT(*) FROM GameState WHERE id = 1";
+            
+            // Prepare and execute the SQL query
+            try (PreparedStatement pstmt = conn.prepareStatement(selectGame);
+                 ResultSet rs = pstmt.executeQuery()) {
+                
+                // Check if the result set has any entries
+                if (rs.next() && rs.getInt(1) > 0) {
+                    // If the count is greater than 0, a saved game exists
+                    System.out.println("A saved game was found.");
+                    System.out.print("Do you want to keep the save (y/n)? ");
+            }
+                
         } catch (SQLException e) {
             // If an SQL error occurs, print the error message
             System.out.println("Failed to check for saved game: " + e.getMessage());
