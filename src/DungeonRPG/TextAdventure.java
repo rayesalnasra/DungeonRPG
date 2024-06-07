@@ -63,6 +63,7 @@ public class TextAdventure implements java.io.Serializable {
     public void movePlayerTo(String direction) {
         Area currentPlayerLocation = player.getPlayerLocation();
         int exit;
+        String message = "";
 
         if (direction.equals("north")) {
             exit = currentPlayerLocation.getNorthExit();
@@ -79,9 +80,9 @@ public class TextAdventure implements java.io.Serializable {
         // Prints current player location if exit is found.
         if (exit != -1) {
             player.setPlayerLocation(gameMap.getMap().get(exit));
-            System.out.println(player.getPlayerLocation().describeArea());
+            message = player.getPlayerLocation().describeArea();
         } else {
-            System.out.println("No Exit");
+            message = "No Exit";
         }
     }
 
