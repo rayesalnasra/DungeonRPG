@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -103,6 +104,16 @@ public class PlayerManager implements Serializable {
        try (Connection conn = connect()) {
         // Retrieve the player inventory from the database
             String selectInventory = "SELECT inventory FROM PlayerInventory WHERE id = 1";
+            
+            // Prepare and execute the SQL query
+            try (PreparedStatement pstmt = conn.prepareStatement(selectInventory);
+             ResultSet rs = pstmt.executeQuery()) {
+            // Check if a record for player inventory exists
+            if (rs.next()) {
+                // If a record is found, retrieve the inventory data
+                byte[] inventoryData = rs.getBytes("inventory");
+            }
+            
        } catch (SQLException | IOException | ClassNotFoundException e) {
             // Handle any exceptions that occur during the load process
             System.out.println("Error loading player inventory: " + e.getMessage());
