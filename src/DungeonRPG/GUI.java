@@ -191,6 +191,7 @@ public class GUI extends javax.swing.JFrame {
         String gameOutput = game.runCommand("Check Inventory");
         setTextArea(gameOutput);
         dropItem.setVisible(true);
+        exitInventory.setVisible(true);
     }//GEN-LAST:event_checkInventoryActionPerformed
 
     private void dropItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dropItemActionPerformed
@@ -209,6 +210,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void exitInventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitInventoryActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_exitInventoryActionPerformed
     
     private void setTextArea(String output) {
