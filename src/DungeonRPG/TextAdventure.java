@@ -60,7 +60,7 @@ public class TextAdventure implements java.io.Serializable {
      * exit is found.
      * @param direction the direction to move the player
      */
-    public void movePlayerTo(String direction) {
+    public String movePlayerTo(String direction) {
         Area currentPlayerLocation = player.getPlayerLocation();
         int exit;
         String message = "";
@@ -84,6 +84,7 @@ public class TextAdventure implements java.io.Serializable {
         } else {
             message = "No Exit";
         }
+        return message;
     }
 
     /*
