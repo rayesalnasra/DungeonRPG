@@ -130,6 +130,10 @@ public class PlayerManager implements Serializable {
             return null; // Return null to indicate failure
         }  
     }
+    
+    public void loadInventory() {
+        this.playerInventory = loadPlayerInventory();
+    }
 
     // Moves an item from one ItemList to another
     private void moveItemTo(Object item, ItemList sourceList, ItemList destinationList) {
