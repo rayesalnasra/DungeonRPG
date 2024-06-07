@@ -105,6 +105,11 @@ public class GUI extends javax.swing.JFrame {
         });
 
         takeItem.setText("TAKE ITEM");
+        takeItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                takeItemActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -131,17 +136,16 @@ public class GUI extends javax.swing.JFrame {
                                             .addGap(10, 10, 10))
                                         .addGroup(layout.createSequentialGroup()
                                             .addComponent(moveSouth)
-                                            .addGap(0, 0, Short.MAX_VALUE))))))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(takeItem)
+                                            .addGap(127, 127, 127))))))
                         .addGap(17, 17, 17))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(checkInventory)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(exitInventory)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(takeItem)
-                        .addGap(155, 155, 155))))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -159,10 +163,10 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(moveEast)
                     .addComponent(moveWest))
                 .addGap(30, 30, 30)
-                .addComponent(moveSouth)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addComponent(takeItem)
-                .addGap(17, 17, 17)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(moveSouth)
+                    .addComponent(takeItem))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
                 .addComponent(exitInventory)
                 .addGap(26, 26, 26))
         );
@@ -222,6 +226,10 @@ public class GUI extends javax.swing.JFrame {
         setTextArea(gameOutput);
         
     }//GEN-LAST:event_exitInventoryActionPerformed
+
+    private void takeItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_takeItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_takeItemActionPerformed
     
     private void setTextArea(String output) {
         textArea.setText(output);
