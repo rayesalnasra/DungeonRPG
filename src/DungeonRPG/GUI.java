@@ -130,6 +130,8 @@ public class GUI extends javax.swing.JFrame {
 
     private void moveEastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moveEastActionPerformed
         // TODO add your handling code here:
+        String gameOutput = game.runCommand("Move East");
+        setTextArea(gameOutput);
     }//GEN-LAST:event_moveEastActionPerformed
 
     private void moveWestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moveWestActionPerformed
