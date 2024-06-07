@@ -34,27 +34,40 @@ public class UserInterface {
         return DriverManager.getConnection(url);
     }
     // Saves the current game state to a file.
-    private static void saveGame() {
-        try {
-            // Create a new file output stream to write the game object
-            FileOutputStream fileOutputStream = new FileOutputStream("Adv.sav");
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-
-            // Write the current game object to the file
-            objectOutputStream.writeObject(game);
-            objectOutputStream.flush(); // Ensure all data is written to the file
-            objectOutputStream.close(); // Close the output stream
-
-            System.out.println("Game has saved successfully!");
-
-            // Check if PlayerInventory.sav exists
-            File playerInventorySave = new File("PlayerInventory.sav");
-            if (playerInventorySave.exists()) {
-                // If PlayerInventory.sav exists, create a copy called PlayerInventorySaved.sav
-                File playerInventorySaved = new File("PlayerInventorySaved.sav");
-                Files.copy(playerInventorySave.toPath(), playerInventorySaved.toPath(), StandardCopyOption.REPLACE_EXISTING);
-            }
-        } catch (Exception e) {
+//    private static void saveGame() {
+//        try {
+//            // Create a new file output stream to write the game object
+//            FileOutputStream fileOutputStream = new FileOutputStream("Adv.sav");
+//            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+//
+//            // Write the current game object to the file
+//            objectOutputStream.writeObject(game);
+//            objectOutputStream.flush(); // Ensure all data is written to the file
+//            objectOutputStream.close(); // Close the output stream
+//
+//            System.out.println("Game has saved successfully!");
+//
+//            // Check if PlayerInventory.sav exists
+//            File playerInventorySave = new File("PlayerInventory.sav");
+//            if (playerInventorySave.exists()) {
+//                // If PlayerInventory.sav exists, create a copy called PlayerInventorySaved.sav
+//                File playerInventorySaved = new File("PlayerInventorySaved.sav");
+//                Files.copy(playerInventorySave.toPath(), playerInventorySaved.toPath(), StandardCopyOption.REPLACE_EXISTING);
+//            }
+//        } catch (Exception e) {
+//            // Handle any exceptions that occur during the save process
+//            System.out.println("There has been an error, the game failed to save");
+//            System.out.println(e.getClass() + ": " + e.getMessage());
+//        }
+//    }
+    
+    public static void saveGame() {
+        // Try to establish a connection to the database
+        try (Connection conn = connect()) {
+            conn.setAutoCommit(false);
+            
+            
+        } catch (SQLException | IOException e) {
             // Handle any exceptions that occur during the save process
             System.out.println("There has been an error, the game failed to save");
             System.out.println(e.getClass() + ": " + e.getMessage());
