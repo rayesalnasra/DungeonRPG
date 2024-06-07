@@ -4,6 +4,8 @@
  */
 package DungeonRPG;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author billg
@@ -175,6 +177,15 @@ public class GUI extends javax.swing.JFrame {
 
     private void dropItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dropItemActionPerformed
         // TODO add your handling code here:
+        String input = JOptionPane.showInputDialog("What Item would you like to drop");
+
+        if (input == null) {
+            // User hit cancel, just return without doing anything
+            return;
+        }
+
+        String gameOutput = game.runCommand("Drop " + input);
+        JOptionPane.showMessageDialog(this, gameOutput, "Game Message", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_dropItemActionPerformed
     
     private void setTextArea(String output) {
