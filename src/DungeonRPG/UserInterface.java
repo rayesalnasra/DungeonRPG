@@ -12,6 +12,7 @@ import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -66,6 +67,13 @@ public class UserInterface {
         try (Connection conn = connect()) {
             conn.setAutoCommit(false);
             
+            // Create the necessary tables if they do not exist
+            try (Statement stmt = conn.createStatement()) {
+                String createGameTable = "CREATE TABLE GameState (id INT PRIMARY KEY, game BLOB)";
+                String createInventoryTable = "CREATE TABLE PlayerInventory (id INT PRIMARY KEY, inventory BLOB)";
+                stmt.executeUpdate(createGameTable);  // Attempt to create GameState table
+                stmt.executeUpdate(createInventoryTable);  // Attempt to create PlayerInventory table
+                
             
         } catch (SQLException | IOException e) {
             // Handle any exceptions that occur during the save process
