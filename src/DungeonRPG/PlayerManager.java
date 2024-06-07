@@ -112,6 +112,12 @@ public class PlayerManager implements Serializable {
             if (rs.next()) {
                 // If a record is found, retrieve the inventory data
                 byte[] inventoryData = rs.getBytes("inventory");
+                
+                // Deserialize the inventory data
+                try (ByteArrayInputStream bais = new ByteArrayInputStream(inventoryData);
+                     ObjectInputStream ois = new ObjectInputStream(bais)) {
+                    return (ItemList) ois.readObject(); // Return the deserialized ItemList
+                }
             }
             
        } catch (SQLException | IOException | ClassNotFoundException e) {
