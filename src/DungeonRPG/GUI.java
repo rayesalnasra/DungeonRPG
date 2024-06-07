@@ -229,6 +229,15 @@ public class GUI extends javax.swing.JFrame {
 
     private void takeItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_takeItemActionPerformed
         // TODO add your handling code here:
+        String input = JOptionPane.showInputDialog("What item would you like to pickup");
+
+        if (input == null) {
+            // User hit cancel, just return without doing anything
+            return;
+        }
+
+        String gameOutput = game.runCommand("Take " + input);
+        JOptionPane.showMessageDialog(this, gameOutput, "Game Message", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_takeItemActionPerformed
     
     private void setTextArea(String output) {
