@@ -117,35 +117,58 @@ public class UserInterface {
     }
 
     // Loads the game state from a file.
-    private static void loadGame() {
-        try {
-            // Delete the player inventory save file if it exists
-            File playerInventorySave = new File("PlayerInventory.sav");
-            if (playerInventorySave.exists()) {
-                playerInventorySave.delete();
-            }
-
-            // Rename PlayerInventorySaved.sav to PlayerInventory.sav if it exists
-            File playerInventorySaved = new File("PlayerInventorySaved.sav");
-            if (playerInventorySaved.exists()) {
-                Files.move(playerInventorySaved.toPath(), playerInventorySave.toPath(), StandardCopyOption.REPLACE_EXISTING);
-            }
-
-            // Create a new file input stream to read the game object
-            FileInputStream fileInputStream = new FileInputStream("Adv.sav");
-            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-
-            // Read the game object from the file
-            game = (TextAdventure) objectInputStream.readObject();
-            objectInputStream.close(); // Close the input stream
-
-            System.out.println("\n---Game loaded successfully---");
-        } catch (Exception e) {
+//    private static void loadGame() {
+//        try {
+//            // Delete the player inventory save file if it exists
+//            File playerInventorySave = new File("PlayerInventory.sav");
+//            if (playerInventorySave.exists()) {
+//                playerInventorySave.delete();
+//            }
+//
+//            // Rename PlayerInventorySaved.sav to PlayerInventory.sav if it exists
+//            File playerInventorySaved = new File("PlayerInventorySaved.sav");
+//            if (playerInventorySaved.exists()) {
+//                Files.move(playerInventorySaved.toPath(), playerInventorySave.toPath(), StandardCopyOption.REPLACE_EXISTING);
+//            }
+//
+//            // Create a new file input stream to read the game object
+//            FileInputStream fileInputStream = new FileInputStream("Adv.sav");
+//            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+//
+//            // Read the game object from the file
+//            game = (TextAdventure) objectInputStream.readObject();
+//            objectInputStream.close(); // Close the input stream
+//
+//            System.out.println("\n---Game loaded successfully---");
+//        } catch (Exception e) {
+//            // Handle any exceptions that occur during the load process
+//            System.out.println("There has been an error in loading the game");
+//            System.out.println(e.getClass() + ": " + e.getMessage());
+//        }
+//    }
+    
+       public static void loadGame() {
+            try (Connection conn = connect()) {
+            // Retrieve the game state from the database
+            String selectGame = "SELECT game FROM GameState WHERE id = 1";
+            
+            // Prepare and execute the SQL query
+            try (PreparedStatement pstmt = conn.prepareStatement(selectGame);
+             ResultSet rs = pstmt.executeQuery()) {
+             
+                // Check if the query returned any results
+                if (rs.next()) {
+                    // Retrieve the byte array from the "game" column
+                    byte[] gameData = rs.getBytes("game");
+                }
+                }
+            } catch (SQLException | IOException | ClassNotFoundException e) {
             // Handle any exceptions that occur during the load process
-            System.out.println("There has been an error in loading the game");
+            System.out.println("There has been an error, the game failed to load");
             System.out.println(e.getClass() + ": " + e.getMessage());
-        }
-    }
+            }
+         }
+       }
 
     /**
      * The main method is the entry point of the application.
