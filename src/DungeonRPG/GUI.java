@@ -210,6 +210,8 @@ public class GUI extends javax.swing.JFrame {
 
     private void exitInventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitInventoryActionPerformed
         // TODO add your handling code here:
+        String gameOutput = game.runCommand("Observe Area");
+        setTextArea(gameOutput);
         
     }//GEN-LAST:event_exitInventoryActionPerformed
     
