@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.PreparedStatement;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -56,6 +57,12 @@ public class PlayerManager implements Serializable {
             ByteArrayOutputStream baos = new ByteArrayOutputStream(); // Create a ByteArrayOutputStream
             try (ObjectOutputStream oos = new ObjectOutputStream(baos)) {
                 oos.writeObject(playerInventory); // Serialize the player inventory object
+            }
+            
+            String updateInventory = "UPDATE PlayerInventory SET inventory = ? WHERE id = 1";
+            try (PreparedStatement pstmt = conn.prepareStatement(updateInventory)) {
+                pstmt.setBytes(1, baos.toByteArray()); // Set the serialized inventory as a byte array
+                int rowsAffected = pstmt.executeUpdate(); // Execute the update
             }
         } catch (SQLException | IOException e) {
             // Handle any exceptions that occur during the save process
