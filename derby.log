@@ -1,13 +1,13 @@
 ----------------------------------------------------------------
-Fri Jun 07 19:00:48 NZST 2024:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-018f-f17f-ff5d-00000b000000 
-on database directory /home/rayesa/DungeonRPG2/DungeonRPG/DungeonRPGDatabase with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@5c29bfd 
-Loaded from file:/home/rayesa/Documents/COMP613/Project%202/Dungeon%20RPG/lib/derby.jar
+Fri Jun 07 19:52:00 NZST 2024:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-018f-f1ae-e025-00000f800000 
+on database directory C:\Users\billg\Documents\GitHub\DungeonRPG\DungeonRPGDatabase with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@7aec35a 
+Loaded from file:/C:/Users/billg/Documents/GitHub/DungeonRPG/lib/derby.jar
 java.vendor=Oracle Corporation
-java.runtime.version=11.0.23+9
-user.dir=/home/rayesa/DungeonRPG2/DungeonRPG
-os.name=Linux
+java.runtime.version=11.0.21+9-LTS-193
+user.dir=C:\Users\billg\Documents\GitHub\DungeonRPG
+os.name=Windows 11
 os.arch=amd64
-os.version=6.9.3-arch1-1
+os.version=10.0
 derby.system.home=null
 Database Class Loader started - derby.database.classpath=''
