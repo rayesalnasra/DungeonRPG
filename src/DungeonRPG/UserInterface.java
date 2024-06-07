@@ -164,7 +164,11 @@ public class UserInterface {
                     // Use ByteArrayInputStream and ObjectInputStream to deserialize the game data
                     try (ByteArrayInputStream bais = new ByteArrayInputStream(gameData);
                          ObjectInputStream ois = new ObjectInputStream(bais)) {
-                }
+                        
+                        // Deserialize the byte array back into a TextAdventure object
+                        game = (TextAdventure) ois.readObject();
+                        System.out.println("Game has loaded successfully!");
+                    }
                 }    
                 
             } catch (SQLException | IOException | ClassNotFoundException e) {
