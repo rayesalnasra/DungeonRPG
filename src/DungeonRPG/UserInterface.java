@@ -210,6 +210,20 @@ public class UserInterface {
                     
                     // Read user input to decide whether to keep or delete the saved game
                     userInput = inputReader.readLine();
+                    
+                    // If the user chooses 'n', proceed to delete the saved game
+                    if (userInput.equalsIgnoreCase("n")) {
+                        // SQL command to delete the saved game entry where id is 1
+                        String deleteGame = "DELETE FROM GameState WHERE id = 1";
+
+                        // Execute the delete command
+                        try (Statement stmt = conn.createStatement()) {
+                            stmt.executeUpdate(deleteGame);
+                        }
+                        // Confirm that the saved game was deleted
+                        System.out.println("Saved game deleted.");
+                    }
+                }
             }
                 
         } catch (SQLException e) {
