@@ -51,6 +51,12 @@ public class PlayerManager implements Serializable {
                     throw e; // Re-throw other SQL errors
                 }
             }
+            
+            // Serialize the player inventory
+            ByteArrayOutputStream baos = new ByteArrayOutputStream(); // Create a ByteArrayOutputStream
+            try (ObjectOutputStream oos = new ObjectOutputStream(baos)) {
+                oos.writeObject(playerInventory); // Serialize the player inventory object
+            }
         } catch (SQLException | IOException e) {
             // Handle any exceptions that occur during the save process
             System.out.println("Error saving player inventory: " + e.getMessage());
