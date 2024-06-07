@@ -12,3 +12,9 @@ os.arch=amd64
 os.version=6.9.3-arch1-1
 derby.system.home=/home/rayesa/DungeonRPG2/DungeonRPG
 Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Fri Jun 07 16:50:00 NZST 2024: Shutting down Derby engine
+----------------------------------------------------------------
+Fri Jun 07 16:50:00 NZST 2024:
+Shutting down instance a816c00e-018f-f103-4c6b-00006f680460 on database directory /home/rayesa/DungeonRPG2/DungeonRPG/DungeonRPGDatabase with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@277050dc 
+----------------------------------------------------------------
