@@ -14,6 +14,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.io.ByteArrayOutputStream;
+import java.sql.PreparedStatement;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -92,7 +93,16 @@ public class UserInterface {
         try (PreparedStatement pstmt = conn.prepareStatement(updateGame)) {
             pstmt.setBytes(1, baos.toByteArray());  // Set the game state byte array
             int rowsAffected = pstmt.executeUpdate();  // Attempt to update
-        
+            
+            // If no rows were updated, insert a new row with the game state
+            if (rowsAffected == 0) {
+                String insertGame = "INSERT INTO GameState (id, game) VALUES (1, ?)";
+                try (PreparedStatement pstmtInsert = conn.prepareStatement(insertGame)) {
+                    pstmtInsert.setBytes(1, baos.toByteArray());  // Set the game state byte array
+                    pstmtInsert.executeUpdate();  // Insert new row
+                }
+            }
+        }
         
         
         } catch (SQLException | IOException e) {
