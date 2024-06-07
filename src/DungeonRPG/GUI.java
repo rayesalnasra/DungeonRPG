@@ -186,6 +186,7 @@ public class GUI extends javax.swing.JFrame {
 
         String gameOutput = game.runCommand("Drop " + input);
         JOptionPane.showMessageDialog(this, gameOutput, "Game Message", JOptionPane.INFORMATION_MESSAGE);
+        checkInventoryActionPerformed(evt);
     }//GEN-LAST:event_dropItemActionPerformed
     
     private void setTextArea(String output) {
