@@ -118,6 +118,10 @@ public class PlayerManager implements Serializable {
                      ObjectInputStream ois = new ObjectInputStream(bais)) {
                     return (ItemList) ois.readObject(); // Return the deserialized ItemList
                 }
+            } else {
+                // If no record is found, inform the user and return an empty inventory
+                System.out.println("No player inventory found in the database.");
+                return new ItemList(); // Return an empty ItemList
             }
             
        } catch (SQLException | IOException | ClassNotFoundException e) {
