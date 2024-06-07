@@ -20,6 +20,7 @@ public class GUI extends javax.swing.JFrame {
         initComponents();
         this.game = new TextAdventure();
         setTextArea(game.printIntroduction());
+        dropItem.setVisible(false);
     }
 
     /**
@@ -173,6 +174,7 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         String gameOutput = game.runCommand("Check Inventory");
         setTextArea(gameOutput);
+        dropItem.setVisible(true);
     }//GEN-LAST:event_checkInventoryActionPerformed
 
     private void dropItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dropItemActionPerformed
