@@ -73,7 +73,12 @@ public class UserInterface {
                 String createInventoryTable = "CREATE TABLE PlayerInventory (id INT PRIMARY KEY, inventory BLOB)";
                 stmt.executeUpdate(createGameTable);  // Attempt to create GameState table
                 stmt.executeUpdate(createInventoryTable);  // Attempt to create PlayerInventory table
-                
+            } catch (SQLException e) {
+            // If tables already exist, ignore the error with SQLState "X0Y32"
+            if (!"X0Y32".equals(e.getSQLState())) {
+                throw e;  // Re-throw other SQL errors
+            }
+        }    
             
         } catch (SQLException | IOException e) {
             // Handle any exceptions that occur during the save process
