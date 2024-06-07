@@ -101,6 +101,12 @@ public class UserInterface {
      * @throws IOException if there is an error reading user input
      */
     public static void main(String[] args) throws IOException {
+        // Test database connection
+        try (Connection conn = connect()) {
+            System.out.println("Database connection established successfully!");
+        } catch (SQLException e) {
+            System.out.println("Failed to connect to the database: " + e.getMessage());
+        }
         // creates a new TextAdventure Object
         game = new TextAdventure();
         // will be used to reader user input.
