@@ -348,6 +348,35 @@ public class GUI extends javax.swing.JFrame {
 
     private void restartGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restartGameActionPerformed
         // TODO add your handling code here:
+        boolean gameSaveExists = GameSaverLoader.doesGameSaveExist();
+        if (gameSaveExists) {
+            int option = JOptionPane.showConfirmDialog(this, "A game save exists. Do you want to load from the last save?", "Restart Game", JOptionPane.YES_NO_CANCEL_OPTION);
+
+            if (option == JOptionPane.YES_OPTION) {
+                game = GameSaverLoader.loadGame();
+                if (game != null) {
+                    JOptionPane.showMessageDialog(this, "Game loaded successfully!", "Game Message", JOptionPane.INFORMATION_MESSAGE);
+                    setTextArea(game.printIntroduction());
+                } else {
+                    JOptionPane.showMessageDialog(this, "Failed to load the game.", "Game Message", JOptionPane.ERROR_MESSAGE);
+                }
+                return;
+            }
+        }
+
+        int saveOption = JOptionPane.showConfirmDialog(this, "Do you want to save the current game before restarting? else all progress will be lost", "Restart Game", JOptionPane.YES_NO_CANCEL_OPTION);
+
+        if (saveOption == JOptionPane.YES_OPTION) {
+            saveGameActionPerformed(evt);
+        } else if (saveOption == JOptionPane.CANCEL_OPTION) {
+            return; // Cancel restarting the game
+        }
+
+        // Restart the game
+        GameSaverLoader.deleteGameSave();
+        game = new TextAdventure();
+        setTextArea(game.printIntroduction());
+        exitInventoryActionPerformed(evt);
     }//GEN-LAST:event_restartGameActionPerformed
 
     private void saveGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveGameActionPerformed
