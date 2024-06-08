@@ -47,7 +47,7 @@ public class MainMenu extends javax.swing.JFrame {
         loadGame = new javax.swing.JButton();
         quitGame = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Dungeon RPG main menu");
         setPreferredSize(new java.awt.Dimension(600, 500));
         setResizable(false);
