@@ -126,4 +126,30 @@ public class GameSaverLoader {
         }
         return gameSaveExists;
     }
+    
+    public static boolean deleteGameSave() {
+        try (Connection conn = connect()) {
+            conn.setAutoCommit(false);  // Start transaction
+
+            // Delete the game state from the database
+            String deleteGame = "DELETE FROM GameState WHERE id = 1";
+            try (PreparedStatement pstmt = conn.prepareStatement(deleteGame)) {
+                pstmt.executeUpdate();
+            }
+
+            // Delete the player inventory from the database
+            String deleteInventory = "DELETE FROM PlayerInventory WHERE id = 1";
+            try (PreparedStatement pstmt = conn.prepareStatement(deleteInventory)) {
+                pstmt.executeUpdate();
+            }
+
+            conn.commit();  // Commit transaction
+            return true;
+        } catch (SQLException e) {
+            System.out.println("There has been an error, the game save failed to delete");
+            System.out.println(e.getClass() + ": " + e.getMessage());
+            return false;
+        }
+    }
+
 }
