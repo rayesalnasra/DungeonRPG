@@ -12,8 +12,6 @@ import java.util.*;
 import javax.swing.*;
 
 
-
-
 /**
  *
  * @author billg
@@ -63,7 +61,7 @@ public class GUI extends javax.swing.JFrame {
         dropItem = new javax.swing.JButton();
         exitInventory = new javax.swing.JButton();
         takeItem = new javax.swing.JButton();
-        quitGame = new javax.swing.JButton();
+        goToMainMenu = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Dungeon RPG");
@@ -131,10 +129,10 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        quitGame.setText("QUIT GAME");
-        quitGame.addActionListener(new java.awt.event.ActionListener() {
+        goToMainMenu.setText("QUIT TO MAIN MENU");
+        goToMainMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                quitGameActionPerformed(evt);
+                goToMainMenuActionPerformed(evt);
             }
         });
 
@@ -142,40 +140,34 @@ public class GUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 25, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(moveWest)
+                        .addGap(80, 80, 80)
+                        .addComponent(moveEast)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(takeItem))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 558, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(dropItem)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(exitInventory))
+                    .addComponent(checkInventory))
+                .addGap(17, 17, 17))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(checkInventory)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(quitGame)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(exitInventory)
-                            .addContainerGap())
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(moveWest)
-                                    .addGap(81, 81, 81)
-                                    .addComponent(moveEast))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 558, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(74, 74, 74)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(moveNorth)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(dropItem)
-                                                .addGap(10, 10, 10))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(moveSouth)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(takeItem)
-                                                .addGap(127, 127, 127))))))
-                            .addGap(17, 17, 17)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(110, 110, 110)
+                        .addComponent(moveNorth))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(107, 107, 107)
+                        .addComponent(moveSouth))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(goToMainMenu)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -184,23 +176,22 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(checkInventory)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(moveNorth)
-                    .addComponent(dropItem))
-                .addGap(28, 28, 28)
+                    .addComponent(dropItem)
+                    .addComponent(exitInventory))
+                .addGap(21, 21, 21)
+                .addComponent(moveNorth)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(moveEast)
-                    .addComponent(moveWest))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(moveSouth)
+                    .addComponent(moveWest)
                     .addComponent(takeItem))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(exitInventory)
-                    .addComponent(quitGame))
-                .addGap(43, 43, 43))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(moveSouth)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
+                .addComponent(goToMainMenu)
+                .addGap(16, 16, 16))
         );
 
         pack();
@@ -273,7 +264,7 @@ public class GUI extends javax.swing.JFrame {
         exitInventoryActionPerformed(evt);
     }//GEN-LAST:event_takeItemActionPerformed
 
-    private void quitGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitGameActionPerformed
+    private void goToMainMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goToMainMenuActionPerformed
         // TODO add your handling code here:
         String message = "Do you want to save the game before quitting?";
         int option = JOptionPane.showConfirmDialog(this, message, "Quit Game", JOptionPane.YES_NO_CANCEL_OPTION);
@@ -284,7 +275,7 @@ public class GUI extends javax.swing.JFrame {
             return; // Cancel quitting the game
         }
         System.exit(0); // Quit the application
-    }//GEN-LAST:event_quitGameActionPerformed
+    }//GEN-LAST:event_goToMainMenuActionPerformed
     
     private void setTextArea(String output) {
         textArea.setText(output);
@@ -329,12 +320,12 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton checkInventory;
     private javax.swing.JButton dropItem;
     private javax.swing.JButton exitInventory;
+    private javax.swing.JButton goToMainMenu;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton moveEast;
     private javax.swing.JButton moveNorth;
     private javax.swing.JButton moveSouth;
     private javax.swing.JButton moveWest;
-    private javax.swing.JButton quitGame;
     private javax.swing.JButton takeItem;
     private javax.swing.JTextArea textArea;
     // End of variables declaration//GEN-END:variables
