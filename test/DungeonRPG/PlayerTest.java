@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit4TestClass.java to edit this template
- */
 package DungeonRPG;
 
 import org.junit.After;
@@ -11,10 +7,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author rayesa
- */
 public class PlayerTest {
     
     public PlayerTest() {
@@ -42,11 +34,13 @@ public class PlayerTest {
     @Test
     public void testSetPlayerLocation() {
         System.out.println("setPlayerLocation");
-        Area playerLocation = null;
-        Player instance = null;
+        // Create an instance of Player
+        Player instance = new Player("TestPlayer", "TestDescription", null, new ItemList());
+        // Create an instance of Area representing the player's location
+        Area playerLocation = new Area("AreaName", "AreaDescription", 0, 0, 0, 0, new ItemList());
         instance.setPlayerLocation(playerLocation);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        // Assert that the player's location has been set correctly
+        assertEquals(playerLocation, instance.getPlayerLocation());
     }
 
     /**
@@ -55,12 +49,13 @@ public class PlayerTest {
     @Test
     public void testGetPlayerLocation() {
         System.out.println("getPlayerLocation");
-        Player instance = null;
-        Area expResult = null;
-        Area result = instance.getPlayerLocation();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        // Create an instance of Player
+        Player instance = new Player("TestPlayer", "TestDescription", null, new ItemList());
+        // Create an instance of Area representing the player's location
+        Area expectedLocation = new Area("AreaName", "AreaDescription", 0, 0, 0, 0, new ItemList());
+        // Set the player's location
+        instance.setPlayerLocation(expectedLocation);
+        // Assert that the player's location matches the expected location
+        assertEquals(expectedLocation, instance.getPlayerLocation());
     }
-    
 }
