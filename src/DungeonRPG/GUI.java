@@ -323,6 +323,27 @@ public class GUI extends javax.swing.JFrame {
 
     private void loadGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadGameActionPerformed
         // TODO add your handling code here:
+        // Check if a save file exists
+        boolean gameSaveExists = GameSaverLoader.doesGameSaveExist();
+
+        if (gameSaveExists) {
+            int option = JOptionPane.showConfirmDialog(this, "Do you want to load a saved game?",
+                    "Load Game", JOptionPane.YES_NO_OPTION);
+
+            if (option == JOptionPane.YES_OPTION) {
+                // Load the game
+                game = GameSaverLoader.loadGame();
+                if (game != null) {
+                    JOptionPane.showMessageDialog(this, "Game loaded successfully!", "Game Message",
+                            JOptionPane.INFORMATION_MESSAGE);
+
+                    exitInventoryActionPerformed(evt);
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "No save file exists.", "Game Message",
+                    JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_loadGameActionPerformed
 
     private void restartGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restartGameActionPerformed
