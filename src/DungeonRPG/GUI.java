@@ -64,6 +64,7 @@ public class GUI extends javax.swing.JFrame {
         goToMainMenu = new javax.swing.JButton();
         loadGame = new javax.swing.JButton();
         saveGame = new javax.swing.JButton();
+        restartGame = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Dungeon RPG");
@@ -147,6 +148,8 @@ public class GUI extends javax.swing.JFrame {
 
         saveGame.setText("SAVE GAME");
 
+        restartGame.setText("RESTART GAME");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -169,6 +172,8 @@ public class GUI extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(restartGame)
+                                .addGap(18, 18, 18)
                                 .addComponent(saveGame)
                                 .addGap(31, 31, 31)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -212,7 +217,8 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(goToMainMenu)
                     .addComponent(loadGame)
-                    .addComponent(saveGame))
+                    .addComponent(saveGame)
+                    .addComponent(restartGame))
                 .addGap(16, 16, 16))
         );
 
@@ -353,6 +359,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton moveNorth;
     private javax.swing.JButton moveSouth;
     private javax.swing.JButton moveWest;
+    private javax.swing.JButton restartGame;
     private javax.swing.JButton saveGame;
     private javax.swing.JButton takeItem;
     private javax.swing.JTextArea textArea;

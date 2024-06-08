@@ -48,6 +48,8 @@
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="restartGame" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="saveGame" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                           </Group>
@@ -106,6 +108,7 @@
                   <Component id="goToMainMenu" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="loadGame" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="saveGame" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="restartGame" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
           </Group>
@@ -212,6 +215,11 @@
     <Component class="javax.swing.JButton" name="saveGame">
       <Properties>
         <Property name="text" type="java.lang.String" value="SAVE GAME"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="restartGame">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="RESTART GAME"/>
       </Properties>
     </Component>
   </SubComponents>
