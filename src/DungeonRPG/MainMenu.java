@@ -4,6 +4,8 @@
  */
 package DungeonRPG;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author billg
@@ -40,6 +42,11 @@ public class MainMenu extends javax.swing.JFrame {
         gameTitle.setText("Dungeon RPG");
 
         newGame.setText("NEW GAME");
+        newGame.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newGameActionPerformed(evt);
+            }
+        });
 
         loadGame.setText("LOAD GAME");
         loadGame.addActionListener(new java.awt.event.ActionListener() {
@@ -90,11 +97,39 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void loadGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadGameActionPerformed
         // TODO add your handling code here:
+        // Check if a save file exists
+        boolean gameSaveExists = GameSaverLoader.doesGameSaveExist();
+
+        if (gameSaveExists) {
+            int option = JOptionPane.showConfirmDialog(this, "Do you want to load a saved game?",
+                    "Load Game", JOptionPane.YES_NO_OPTION);
+
+            if (option == JOptionPane.YES_OPTION) {
+                TextAdventure game = GameSaverLoader.loadGame();
+                if (game != null) {
+                    JOptionPane.showMessageDialog(this, "Game loaded successfully!", "Game Message",
+                            JOptionPane.INFORMATION_MESSAGE);
+
+                    // Open the game GUI and load the game state
+                    GUI gui = new GUI();
+                    gui.setGame(game);  // Ensure this method exists to set the loaded game state
+                    gui.setVisible(true);
+                    this.dispose(); // Close the main menu
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "No save file exists.", "Game Message",
+                    JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_loadGameActionPerformed
 
     private void quitGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitGameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_quitGameActionPerformed
+
+    private void newGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newGameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_newGameActionPerformed
 
     /**
      * @param args the command line arguments
