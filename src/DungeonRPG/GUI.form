@@ -74,7 +74,7 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                      <Component id="goToMainMenu" min="-2" max="-2" attributes="0"/>
+                      <Component id="quitGame" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
@@ -105,7 +105,7 @@
               <Component id="moveSouth" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="111" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="goToMainMenu" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="quitGame" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="loadGame" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="saveGame" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="restartGame" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -196,12 +196,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="takeItemActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="goToMainMenu">
+    <Component class="javax.swing.JButton" name="quitGame">
       <Properties>
         <Property name="text" type="java.lang.String" value="QUIT TO MAIN MENU"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="goToMainMenuActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="quitGameActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="loadGame">
@@ -216,11 +216,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="SAVE GAME"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="saveGameActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="restartGame">
       <Properties>
         <Property name="text" type="java.lang.String" value="RESTART GAME"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="restartGameActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

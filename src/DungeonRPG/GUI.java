@@ -61,7 +61,7 @@ public class GUI extends javax.swing.JFrame {
         dropItem = new javax.swing.JButton();
         exitInventory = new javax.swing.JButton();
         takeItem = new javax.swing.JButton();
-        goToMainMenu = new javax.swing.JButton();
+        quitGame = new javax.swing.JButton();
         loadGame = new javax.swing.JButton();
         saveGame = new javax.swing.JButton();
         restartGame = new javax.swing.JButton();
@@ -132,10 +132,10 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        goToMainMenu.setText("QUIT TO MAIN MENU");
-        goToMainMenu.addActionListener(new java.awt.event.ActionListener() {
+        quitGame.setText("QUIT TO MAIN MENU");
+        quitGame.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                goToMainMenuActionPerformed(evt);
+                quitGameActionPerformed(evt);
             }
         });
 
@@ -147,8 +147,18 @@ public class GUI extends javax.swing.JFrame {
         });
 
         saveGame.setText("SAVE GAME");
+        saveGame.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveGameActionPerformed(evt);
+            }
+        });
 
         restartGame.setText("RESTART GAME");
+        restartGame.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                restartGameActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -190,7 +200,7 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(moveSouth))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(16, 16, 16)
-                        .addComponent(goToMainMenu)))
+                        .addComponent(quitGame)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -215,7 +225,7 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(moveSouth)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(goToMainMenu)
+                    .addComponent(quitGame)
                     .addComponent(loadGame)
                     .addComponent(saveGame)
                     .addComponent(restartGame))
@@ -292,7 +302,7 @@ public class GUI extends javax.swing.JFrame {
         exitInventoryActionPerformed(evt);
     }//GEN-LAST:event_takeItemActionPerformed
 
-    private void goToMainMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goToMainMenuActionPerformed
+    private void quitGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitGameActionPerformed
         // TODO add your handling code here:
         String message = "Do you want to save the game before quitting?";
         int option = JOptionPane.showConfirmDialog(this, message, "Quit Game", JOptionPane.YES_NO_CANCEL_OPTION);
@@ -303,11 +313,19 @@ public class GUI extends javax.swing.JFrame {
             return; // Cancel quitting the game
         }
         System.exit(0); // Quit the application
-    }//GEN-LAST:event_goToMainMenuActionPerformed
+    }//GEN-LAST:event_quitGameActionPerformed
 
     private void loadGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadGameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_loadGameActionPerformed
+
+    private void restartGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restartGameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_restartGameActionPerformed
+
+    private void saveGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveGameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_saveGameActionPerformed
     
     private void setTextArea(String output) {
         textArea.setText(output);
@@ -352,13 +370,13 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton checkInventory;
     private javax.swing.JButton dropItem;
     private javax.swing.JButton exitInventory;
-    private javax.swing.JButton goToMainMenu;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton loadGame;
     private javax.swing.JButton moveEast;
     private javax.swing.JButton moveNorth;
     private javax.swing.JButton moveSouth;
     private javax.swing.JButton moveWest;
+    private javax.swing.JButton quitGame;
     private javax.swing.JButton restartGame;
     private javax.swing.JButton saveGame;
     private javax.swing.JButton takeItem;
