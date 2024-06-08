@@ -94,4 +94,36 @@ public class GameSaverLoader {
         }
         return loadedGame;
     }
+    
+    public static boolean doesGameSaveExist() {
+        boolean gameSaveExists = false;
+        TextAdventure loadedGame = null;
+        try (Connection conn = connect()) {
+            // Retrieve the game state from the database
+            String selectGame = "SELECT game FROM GameState WHERE id = 1";
+            try (PreparedStatement pstmt = conn.prepareStatement(selectGame);
+                 ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    gameSaveExists = true;
+                    byte[] gameData = rs.getBytes("game");
+                    try (ByteArrayInputStream bais = new ByteArrayInputStream(gameData);
+                         ObjectInputStream ois = new ObjectInputStream(bais)) {
+                        loadedGame = (TextAdventure) ois.readObject();
+                        System.out.println("Game has loaded successfully!");
+                    }
+
+                    // Load the player inventory
+                    PlayerManager playerManager = new PlayerManager(loadedGame);
+                    playerManager.loadInventory();
+                } else {
+                    System.out.println("No game state found in the database.");
+                }
+            }
+        } catch (SQLException | IOException | ClassNotFoundException e) {
+            // Handle any exceptions that occur during the load process
+            System.out.println("There has been an error, the game failed to load");
+            System.out.println(e.getClass() + ": " + e.getMessage());
+        }
+        return gameSaveExists;
+    }
 }
