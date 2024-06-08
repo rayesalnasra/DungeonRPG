@@ -291,6 +291,13 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         String gameOutput = game.runCommand("Observe Area");
         setTextArea(gameOutput);
+        exitInventory.setVisible(false);
+        dropItem.setVisible(false);
+        moveNorth.setVisible(true);
+        moveEast.setVisible(true);
+        moveWest.setVisible(true);
+        moveSouth.setVisible(true);
+        takeItem.setVisible(true);
         
     }//GEN-LAST:event_exitInventoryActionPerformed
 
