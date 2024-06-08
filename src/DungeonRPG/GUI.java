@@ -63,6 +63,7 @@ public class GUI extends javax.swing.JFrame {
         takeItem = new javax.swing.JButton();
         goToMainMenu = new javax.swing.JButton();
         loadGame = new javax.swing.JButton();
+        saveGame = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Dungeon RPG");
@@ -144,6 +145,8 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        saveGame.setText("SAVE GAME");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -158,10 +161,16 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(exitInventory))
                     .addComponent(checkInventory)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(moveWest)
-                        .addGap(80, 80, 80)
-                        .addComponent(moveEast)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(moveWest)
+                                .addGap(80, 80, 80)
+                                .addComponent(moveEast)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(saveGame)
+                                .addGap(31, 31, 31)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(loadGame)
                             .addComponent(takeItem))))
@@ -202,7 +211,8 @@ public class GUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(goToMainMenu)
-                    .addComponent(loadGame))
+                    .addComponent(loadGame)
+                    .addComponent(saveGame))
                 .addGap(16, 16, 16))
         );
 
@@ -343,6 +353,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton moveNorth;
     private javax.swing.JButton moveSouth;
     private javax.swing.JButton moveWest;
+    private javax.swing.JButton saveGame;
     private javax.swing.JButton takeItem;
     private javax.swing.JTextArea textArea;
     // End of variables declaration//GEN-END:variables

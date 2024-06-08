@@ -39,10 +39,19 @@
                   </Group>
                   <Component id="checkInventory" alignment="1" min="-2" max="-2" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="moveWest" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
-                      <Component id="moveEast" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="moveWest" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
+                              <Component id="moveEast" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="saveGame" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="loadGame" min="-2" max="-2" attributes="0"/>
                           <Component id="takeItem" min="-2" max="-2" attributes="0"/>
@@ -96,6 +105,7 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="goToMainMenu" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="loadGame" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="saveGame" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
           </Group>
@@ -198,6 +208,11 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="loadGameActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="saveGame">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="SAVE GAME"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
