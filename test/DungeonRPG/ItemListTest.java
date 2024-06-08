@@ -1,22 +1,20 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit4TestClass.java to edit this template
- */
 package DungeonRPG;
 
-import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import java.util.ArrayList;
 
 /**
  *
  * @author rayesa
  */
 public class ItemListTest {
+    
+    private ItemList itemList;
     
     public ItemListTest() {
     }
@@ -31,6 +29,8 @@ public class ItemListTest {
     
     @Before
     public void setUp() {
+        itemList = new ItemList();
+        itemList.addItemToList(new Loot("carrot", "A crunchy orange carrot", "common"));
     }
     
     @After
@@ -43,12 +43,9 @@ public class ItemListTest {
     @Test
     public void testDescribeItemsInList() {
         System.out.println("describeItemsInList");
-        ItemList instance = new ItemList();
-        String expResult = "";
-        String result = instance.describeItemsInList();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String expectedOutput = "carrot: A crunchy orange carrot\n";
+        String result = itemList.describeItemsInList();
+        assertEquals(expectedOutput, result);
     }
 
     /**
@@ -57,13 +54,10 @@ public class ItemListTest {
     @Test
     public void testGetItemByName() {
         System.out.println("getItemByName");
-        String itemName = "";
-        ItemList instance = new ItemList();
-        Object expResult = null;
-        Object result = instance.getItemByName(itemName);
+        String itemName = "carrot";
+        Object expResult = itemList.getItemList().get(0);
+        Object result = itemList.getItemByName(itemName);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -72,11 +66,10 @@ public class ItemListTest {
     @Test
     public void testAddItemToList() {
         System.out.println("addItemToList");
-        Object item = null;
-        ItemList instance = new ItemList();
-        instance.addItemToList(item);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        int initialSize = itemList.getItemList().size();
+        itemList.addItemToList(new Loot("apple", "A juicy red apple", "common"));
+        int newSize = itemList.getItemList().size();
+        assertEquals(initialSize + 1, newSize);
     }
 
     /**
@@ -85,12 +78,8 @@ public class ItemListTest {
     @Test
     public void testGetItemList() {
         System.out.println("getItemList");
-        ItemList instance = new ItemList();
-        ArrayList<Object> expResult = null;
-        ArrayList<Object> result = instance.getItemList();
+        ArrayList<Object> expResult = itemList.getItemList();
+        ArrayList<Object> result = itemList.getItemList();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
-    
 }
