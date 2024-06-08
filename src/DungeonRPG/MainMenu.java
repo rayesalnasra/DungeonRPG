@@ -29,6 +29,7 @@ public class MainMenu extends javax.swing.JFrame {
         gameTitle = new javax.swing.JLabel();
         newGame = new javax.swing.JButton();
         loadGame = new javax.swing.JButton();
+        quitGame = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Dungeon RPG main menu");
@@ -47,6 +48,13 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
+        quitGame.setText("QUIT");
+        quitGame.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quitGameActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -58,6 +66,7 @@ public class MainMenu extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(307, 307, 307)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(quitGame)
                     .addComponent(loadGame)
                     .addComponent(newGame))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -71,7 +80,9 @@ public class MainMenu extends javax.swing.JFrame {
                 .addComponent(newGame)
                 .addGap(32, 32, 32)
                 .addComponent(loadGame)
-                .addContainerGap(121, Short.MAX_VALUE))
+                .addGap(32, 32, 32)
+                .addComponent(quitGame)
+                .addContainerGap(67, Short.MAX_VALUE))
         );
 
         pack();
@@ -80,6 +91,10 @@ public class MainMenu extends javax.swing.JFrame {
     private void loadGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadGameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_loadGameActionPerformed
+
+    private void quitGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitGameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_quitGameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -120,5 +135,6 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JLabel gameTitle;
     private javax.swing.JButton loadGame;
     private javax.swing.JButton newGame;
+    private javax.swing.JButton quitGame;
     // End of variables declaration//GEN-END:variables
 }
