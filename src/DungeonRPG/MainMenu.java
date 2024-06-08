@@ -125,6 +125,11 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void quitGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitGameActionPerformed
         // TODO add your handling code here:
+         int option = JOptionPane.showConfirmDialog(this, "Are you sure you want to quit?",
+                "Quit Game", JOptionPane.YES_NO_OPTION);
+        if (option == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
     }//GEN-LAST:event_quitGameActionPerformed
 
     private void newGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newGameActionPerformed
