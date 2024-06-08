@@ -265,6 +265,12 @@ public class GUI extends javax.swing.JFrame {
         setTextArea(gameOutput);
         dropItem.setVisible(true);
         exitInventory.setVisible(true);
+        dropItem.setVisible(true);
+        moveNorth.setVisible(false);
+        moveEast.setVisible(false);
+        moveWest.setVisible(false);
+        moveSouth.setVisible(false);
+        takeItem.setVisible(false);
     }//GEN-LAST:event_checkInventoryActionPerformed
 
     private void dropItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dropItemActionPerformed
