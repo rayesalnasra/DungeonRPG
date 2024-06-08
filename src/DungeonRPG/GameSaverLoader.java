@@ -4,10 +4,64 @@
  */
 package DungeonRPG;
 
+import java.io.*;
+import java.sql.*;
+
 /**
  *
  * @author rayesa
  */
 public class GameSaverLoader {
     
+    private static Connection connect() throws SQLException {
+        String url = "jdbc:derby:DungeonRPGDatabase;create=true"; // Adjust the URL as needed
+        return DriverManager.getConnection(url);
+    }
+    
+    public static void saveGame(TextAdventure game) {
+        try (Connection conn = connect()) {
+            conn.setAutoCommit(false);  // Start transaction
+
+            // Ensure the tables exist
+            try (Statement stmt = conn.createStatement()) {
+                String createGameTable = "CREATE TABLE GameState (id INT PRIMARY KEY, game BLOB)";
+                String createInventoryTable = "CREATE TABLE PlayerInventory (id INT PRIMARY KEY, inventory BLOB)";
+                stmt.executeUpdate(createGameTable);
+                stmt.executeUpdate(createInventoryTable);
+            } catch (SQLException e) {
+                // Handle case where tables already exist
+                if (!e.getSQLState().equals("X0Y32")) {
+                    throw e;
+                }
+            }
+
+            // Serialize the game object
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            try (ObjectOutputStream oos = new ObjectOutputStream(baos)) {
+                oos.writeObject(game);
+            }
+
+            // Update the game state in the database
+            String updateGame = "UPDATE GameState SET game = ? WHERE id = 1";
+            try (PreparedStatement pstmt = conn.prepareStatement(updateGame)) {
+                pstmt.setBytes(1, baos.toByteArray());
+                int rowsAffected = pstmt.executeUpdate();
+                if (rowsAffected == 0) {
+                    String insertGame = "INSERT INTO GameState (id, game) VALUES (1, ?)";
+                    try (PreparedStatement pstmtInsert = conn.prepareStatement(insertGame)) {
+                        pstmtInsert.setBytes(1, baos.toByteArray());
+                        pstmtInsert.executeUpdate();
+                    }
+                }
+            }
+
+            conn.commit();  // Commit transaction
+
+            System.out.println("Game has saved successfully!");
+        } catch (SQLException | IOException e) {
+            // Handle any exceptions that occur during the save process
+            System.out.println("There has been an error, the game failed to save");
+            System.out.println(e.getClass() + ": " + e.getMessage());
+        }
+    }
 }
