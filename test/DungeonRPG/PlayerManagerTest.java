@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit4TestClass.java to edit this template
- */
 package DungeonRPG;
 
 import org.junit.After;
@@ -12,28 +8,36 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- *
- * @author rayesa
+ * JUnit test class for PlayerManager.
  */
 public class PlayerManagerTest {
+    
+    private PlayerManager playerManager;
+    private TextAdventure textAdventure;
     
     public PlayerManagerTest() {
     }
     
     @BeforeClass
     public static void setUpClass() {
+        // Perform any initialization that needs to be done once for all tests
     }
     
     @AfterClass
     public static void tearDownClass() {
+        // Perform any clean-up operations that need to be done once after all tests
     }
     
     @Before
     public void setUp() {
+        // Initialize PlayerManager, TextAdventure, and related objects before each test
+        textAdventure = new TextAdventure();
+        playerManager = new PlayerManager(textAdventure);
     }
     
     @After
     public void tearDown() {
+        // Perform any clean-up operations that need to be done after each test
     }
 
     /**
@@ -42,10 +46,11 @@ public class PlayerManagerTest {
     @Test
     public void testSavePlayerInventory() {
         System.out.println("savePlayerInventory");
-        PlayerManager instance = null;
-        instance.savePlayerInventory();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        try {
+            playerManager.savePlayerInventory();
+        } catch (Exception e) {
+            fail("Unexpected exception: " + e.getMessage());
+        }
     }
 
     /**
@@ -54,10 +59,11 @@ public class PlayerManagerTest {
     @Test
     public void testLoadInventory() {
         System.out.println("loadInventory");
-        PlayerManager instance = null;
-        instance.loadInventory();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        try {
+            playerManager.loadInventory();
+        } catch (Exception e) {
+            fail("Unexpected exception: " + e.getMessage());
+        }
     }
 
     /**
@@ -66,13 +72,10 @@ public class PlayerManagerTest {
     @Test
     public void testGrabLoot() {
         System.out.println("grabLoot");
-        String item = "";
-        PlayerManager instance = null;
-        String expResult = "";
-        String result = instance.grabLoot(item);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String item = "carrot";
+        String expectedMessage = "carrot has been taken.";
+        String result = playerManager.grabLoot(item);
+        assertEquals(expectedMessage, result);
     }
 
     /**
@@ -81,13 +84,10 @@ public class PlayerManagerTest {
     @Test
     public void testDropLoot() {
         System.out.println("dropLoot");
-        String item = "";
-        PlayerManager instance = null;
-        String expResult = "";
-        String result = instance.dropLoot(item);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String item = "carrot";
+        String expectedMessage = "carrot has been dropped.";
+        String result = playerManager.dropLoot(item);
+        assertEquals(expectedMessage, result);
     }
 
     /**
@@ -96,12 +96,8 @@ public class PlayerManagerTest {
     @Test
     public void testCheckPlayerInventory() {
         System.out.println("checkPlayerInventory");
-        PlayerManager instance = null;
-        String expResult = "";
-        String result = instance.checkPlayerInventory();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        // Ensure the method does not return null
+        assertNotNull(playerManager.checkPlayerInventory());
     }
 
     /**
@@ -110,12 +106,7 @@ public class PlayerManagerTest {
     @Test
     public void testObservePlayerLocation() {
         System.out.println("observePlayerLocation");
-        PlayerManager instance = null;
-        String expResult = "";
-        String result = instance.observePlayerLocation();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        // Ensure the method does not return null
+        assertNotNull(playerManager.observePlayerLocation());
     }
-    
 }
