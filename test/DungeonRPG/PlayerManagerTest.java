@@ -38,6 +38,8 @@ public class PlayerManagerTest {
     @After
     public void tearDown() {
         // Perform any clean-up operations that need to be done after each test
+        // Remove the "carrot" from the player's inventory after each test
+        playerManager.dropLoot("carrot");
     }
 
     /**
@@ -84,11 +86,15 @@ public class PlayerManagerTest {
     @Test
     public void testDropLoot() {
         System.out.println("dropLoot");
+        // Add the item "carrot" to the player's inventory for testing
+        playerManager.grabLoot("carrot");
+
         String item = "carrot";
         String expectedMessage = "carrot has been dropped.";
         String result = playerManager.dropLoot(item);
         assertEquals(expectedMessage, result);
     }
+
 
     /**
      * Test of checkPlayerInventory method, of class PlayerManager.
