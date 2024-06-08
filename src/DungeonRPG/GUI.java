@@ -380,7 +380,6 @@ public class GUI extends javax.swing.JFrame {
         }
 
         // Restart the game
-        GameSaverLoader.deleteGameSave();
         game = new TextAdventure();
         setTextArea(game.printIntroduction());
         exitInventoryActionPerformed(evt);
