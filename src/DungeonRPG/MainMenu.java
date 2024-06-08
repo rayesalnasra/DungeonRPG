@@ -81,7 +81,7 @@ public class MainMenu extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(173, Short.MAX_VALUE)
+                .addContainerGap(152, Short.MAX_VALUE)
                 .addComponent(gameTitle)
                 .addGap(169, 169, 169))
             .addGroup(layout.createSequentialGroup()
@@ -103,7 +103,7 @@ public class MainMenu extends javax.swing.JFrame {
                 .addComponent(loadGame)
                 .addGap(32, 32, 32)
                 .addComponent(quitGame)
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
 
         pack();

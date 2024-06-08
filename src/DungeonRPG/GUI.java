@@ -37,10 +37,12 @@ public class GUI extends javax.swing.JFrame {
         });
         
     }
+    
     public void setGame(TextAdventure game) {
         this.game = game;
         exitInventoryActionPerformed(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, null));
     }
+    
     public void onExit(){
         quitGameActionPerformed(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, null));
     }
