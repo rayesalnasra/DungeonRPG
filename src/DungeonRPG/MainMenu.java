@@ -4,6 +4,9 @@
  */
 package DungeonRPG;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,6 +20,17 @@ public class MainMenu extends javax.swing.JFrame {
      */
     public MainMenu() {
         initComponents();
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                onExit();    
+            }
+          
+        });
+        
+    }
+    public void onExit(){
+        quitGameActionPerformed(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, null));
     }
 
     /**
