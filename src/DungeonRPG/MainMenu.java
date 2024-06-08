@@ -27,7 +27,8 @@ public class MainMenu extends javax.swing.JFrame {
     private void initComponents() {
 
         gameTitle = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        newGame = new javax.swing.JButton();
+        loadGame = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Dungeon RPG main menu");
@@ -37,7 +38,14 @@ public class MainMenu extends javax.swing.JFrame {
         gameTitle.setFont(new java.awt.Font("Segoe UI", 0, 60)); // NOI18N
         gameTitle.setText("Dungeon RPG");
 
-        jButton1.setText("NEW GAME");
+        newGame.setText("NEW GAME");
+
+        loadGame.setText("LOAD GAME");
+        loadGame.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loadGameActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -49,7 +57,9 @@ public class MainMenu extends javax.swing.JFrame {
                 .addGap(169, 169, 169))
             .addGroup(layout.createSequentialGroup()
                 .addGap(307, 307, 307)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(loadGame)
+                    .addComponent(newGame))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -58,12 +68,18 @@ public class MainMenu extends javax.swing.JFrame {
                 .addGap(61, 61, 61)
                 .addComponent(gameTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
-                .addContainerGap(175, Short.MAX_VALUE))
+                .addComponent(newGame)
+                .addGap(32, 32, 32)
+                .addComponent(loadGame)
+                .addContainerGap(121, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void loadGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadGameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_loadGameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -102,6 +118,7 @@ public class MainMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel gameTitle;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton loadGame;
+    private javax.swing.JButton newGame;
     // End of variables declaration//GEN-END:variables
 }
