@@ -134,6 +134,10 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void newGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newGameActionPerformed
         // TODO add your handling code here:
+        // Open the GraphicalUserInterface
+        GUI gui = new GUI();
+        gui.setVisible(true);  // Show the game GUI
+        this.dispose();  // Close the main menu
     }//GEN-LAST:event_newGameActionPerformed
 
     /**
