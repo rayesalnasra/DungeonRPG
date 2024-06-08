@@ -37,6 +37,12 @@ public class GUI extends javax.swing.JFrame {
         });
         
     }
+    
+    public void setGame(TextAdventure game) {
+        this.game = game;
+        exitInventoryActionPerformed(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, null));
+    }
+    
     public void onExit(){
         quitGameActionPerformed(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, null));
     }
@@ -322,11 +328,20 @@ public class GUI extends javax.swing.JFrame {
         int option = JOptionPane.showConfirmDialog(this, message, "Quit Game", JOptionPane.YES_NO_CANCEL_OPTION);
 
         if (option == JOptionPane.YES_OPTION) {
-             // add save game function here
+            saveGameActionPerformed(evt); // Call the existing saveGameActionPerformed method
         } else if (option == JOptionPane.CANCEL_OPTION) {
             return; // Cancel quitting the game
         }
-        System.exit(0); // Quit the application
+
+        // Dispose the current game window
+        this.dispose();
+
+        // Return to the main menu
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new MainMenu().setVisible(true);
+            }
+        });
     }//GEN-LAST:event_quitGameActionPerformed
 
     private void loadGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadGameActionPerformed
