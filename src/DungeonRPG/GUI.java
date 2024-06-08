@@ -62,6 +62,7 @@ public class GUI extends javax.swing.JFrame {
         exitInventory = new javax.swing.JButton();
         takeItem = new javax.swing.JButton();
         goToMainMenu = new javax.swing.JButton();
+        loadGame = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Dungeon RPG");
@@ -136,6 +137,13 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        loadGame.setText("LOAD GAME");
+        loadGame.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loadGameActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -143,18 +151,20 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 25, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(moveWest)
-                        .addGap(80, 80, 80)
-                        .addComponent(moveEast)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(takeItem))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 558, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(dropItem)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(exitInventory))
-                    .addComponent(checkInventory))
+                    .addComponent(checkInventory)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(moveWest)
+                        .addGap(80, 80, 80)
+                        .addComponent(moveEast)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(loadGame)
+                            .addComponent(takeItem))))
                 .addGap(17, 17, 17))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -190,7 +200,9 @@ public class GUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(moveSouth)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
-                .addComponent(goToMainMenu)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(goToMainMenu)
+                    .addComponent(loadGame))
                 .addGap(16, 16, 16))
         );
 
@@ -276,6 +288,10 @@ public class GUI extends javax.swing.JFrame {
         }
         System.exit(0); // Quit the application
     }//GEN-LAST:event_goToMainMenuActionPerformed
+
+    private void loadGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadGameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_loadGameActionPerformed
     
     private void setTextArea(String output) {
         textArea.setText(output);
@@ -322,6 +338,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton exitInventory;
     private javax.swing.JButton goToMainMenu;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton loadGame;
     private javax.swing.JButton moveEast;
     private javax.swing.JButton moveNorth;
     private javax.swing.JButton moveSouth;
