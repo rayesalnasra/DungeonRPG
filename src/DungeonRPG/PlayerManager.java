@@ -174,13 +174,13 @@ public class PlayerManager implements Serializable {
     }
 
     // Displays the contents of the player's inventory
-    public void checkPlayerInventory() {
-        System.out.println("Your inventory:");
-        System.out.println(playerInventory.describeItemsInList());
+    public String checkPlayerInventory() {
+        String message = "Your inventory:\n" + playerInventory.describeItemsInList();
+        return message;
     }
 
     // Displays a description of the player's current location
-    public void observePlayerLocation() {
-        System.out.println(game.getPlayer().getPlayerLocation().describeArea());
+    public String observePlayerLocation() {
+        return game.getPlayer().getPlayerLocation().describeArea();
     }
 }
