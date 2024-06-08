@@ -352,6 +352,20 @@ public class GUI extends javax.swing.JFrame {
 
     private void saveGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveGameActionPerformed
         // TODO add your handling code here:
+        boolean gameSaveExists = GameSaverLoader.doesGameSaveExist();
+        String message;
+        if (gameSaveExists) {
+            message = "A game save already exists. Do you want to overwrite it?";
+        } else {
+            message = "Do you want to save the game?";
+        }
+
+        int option = JOptionPane.showConfirmDialog(this, message, "Save Game", JOptionPane.YES_NO_OPTION);
+
+        if (option == JOptionPane.YES_OPTION) {
+            GameSaverLoader.saveGame(game);
+            JOptionPane.showMessageDialog(this, "Game saved successfully!", "Game Message", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_saveGameActionPerformed
     
     private void setTextArea(String output) {
