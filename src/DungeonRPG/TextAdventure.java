@@ -85,7 +85,7 @@ public class TextAdventure implements java.io.Serializable {
             player.setPlayerLocation(gameMap.getMap().get(exit));
             message = player.getPlayerLocation().describeArea();
         } else {
-            message = "There is no exit in that direction...\n you head back... \n" + player.getPlayerLocation().describeArea();
+            message = "You find there is no exit in that direction...\nyou head back... \n" + player.getPlayerLocation().describeArea();
         }
         return message;
     }
