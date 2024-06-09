@@ -388,13 +388,29 @@ public class GUI extends javax.swing.JFrame {
                 return;
             }
         }
-
+        
         int saveOption = JOptionPane.showConfirmDialog(this, "Do you want to save the current game before restarting? else all progress will be lost", "Restart Game", JOptionPane.YES_NO_CANCEL_OPTION);
-
+        boolean gameSaved = false;
         if (saveOption == JOptionPane.YES_OPTION) {
             saveGameActionPerformed(evt);
+            gameSaved = true;
         } else if (saveOption == JOptionPane.CANCEL_OPTION) {
             return; // Cancel restarting the game
+        }
+        
+        // Ask if the user wants to delete existing saves before restarting
+        if (gameSaveExists && gameSaved == false) {
+            int deleteOption = JOptionPane.showConfirmDialog(this, "Do you want to delete existing saves before restarting?", "Restart Game", JOptionPane.YES_NO_OPTION);
+
+            if (deleteOption == JOptionPane.YES_OPTION) {
+                boolean deleteSuccessful = GameSaverLoader.deleteGameSave();
+                if (!deleteSuccessful) {
+                    JOptionPane.showMessageDialog(this, "Failed to delete game saves.", "Game Message", JOptionPane.ERROR_MESSAGE);
+                    return; // Cancel restarting if deletion fails
+                } else {
+                    JOptionPane.showMessageDialog(this, "Existing saves deleted.", "Game Message", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
         }
         
         game.getPlayerManager().resetInventory();
