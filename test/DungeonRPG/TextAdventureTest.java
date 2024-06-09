@@ -59,8 +59,9 @@ public class TextAdventureTest {
     public void testMovePlayerTo() {
         System.out.println("movePlayerTo");
         TextAdventure instance = new TextAdventure();
+        Player player = instance.getPlayer();
         String direction = "north";
-        String expResult = "No Exit";
+        String expResult = "You find there is no exit in that direction...\nyou head back... \n" + player.getPlayerLocation().describeArea();
         String result = instance.movePlayerTo(direction);
         assertEquals(expResult, result);
     }
