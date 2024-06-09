@@ -182,7 +182,7 @@ public class InputParser implements java.io.Serializable {
         }
 
         if (!validTargets.containsKey(target)) {
-            message = target + "this item doesn't seem to exist";
+            message = target + " this item doesn't seem to exist";
         }
 
         if (validCommands.containsKey(command) && validTargets.containsKey(target)) {

@@ -154,7 +154,7 @@ public class PlayerManager implements Serializable {
         Object areaHasItem = game.getPlayer().getPlayerLocation().getItemInventory().getItemByName(item);
 
         if (areaHasItem == null) {
-            message = "There is no loot here.";
+            message = "This item is not here";
         } else {
             moveItemTo(areaHasItem, game.getPlayer().getPlayerLocation().getItemInventory(), playerInventory);
             message = item + " has been taken.";
