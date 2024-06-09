@@ -72,7 +72,6 @@ public class GUI extends javax.swing.JFrame {
         loadGame = new javax.swing.JButton();
         saveGame = new javax.swing.JButton();
         restartGame = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Dungeon RPG");
@@ -168,13 +167,6 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -212,13 +204,11 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(moveNorth))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(107, 107, 107)
-                        .addComponent(moveSouth)
-                        .addGap(130, 130, 130)
-                        .addComponent(jButton1))
+                        .addComponent(moveSouth))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addComponent(quitGame)))
-                .addContainerGap(165, Short.MAX_VALUE))
+                .addContainerGap(375, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -239,9 +229,7 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(moveWest)
                     .addComponent(takeItem))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(moveSouth)
-                    .addComponent(jButton1))
+                .addComponent(moveSouth)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(quitGame)
@@ -434,11 +422,6 @@ public class GUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Game saved successfully!", "Game Message", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_saveGameActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        GameSaverLoader.deleteGameSave();
-    }//GEN-LAST:event_jButton1ActionPerformed
     
     private void setTextArea(String output) {
         textArea.setText(output);
@@ -483,7 +466,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton checkInventory;
     private javax.swing.JButton dropItem;
     private javax.swing.JButton exitInventory;
-    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton loadGame;
     private javax.swing.JButton moveEast;
