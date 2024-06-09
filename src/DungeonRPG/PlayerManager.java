@@ -29,15 +29,7 @@ public class PlayerManager implements Serializable {
         String url = "jdbc:derby:DungeonRPGDatabase;create=true"; // Adjust the URL as needed
         return DriverManager.getConnection(url);
     }
-    
-    // Saves the player's inventory to a file
-//    private void savePlayerInventory() {
-//        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("PlayerInventory.sav"))) {
-//            oos.writeObject(playerInventory);
-//        } catch (IOException e) {
-//            System.out.println("Error saving player inventory: " + e.getMessage());
-//        }
-//    }
+
 
     public void savePlayerInventory() {
         try (Connection conn = connect()) {
@@ -85,20 +77,6 @@ public class PlayerManager implements Serializable {
         }
     }
     
-    // Loads the player's inventory from a file
-//    private ItemList loadPlayerInventory() {
-//        File file = new File("PlayerInventory.sav");
-//        if (!file.exists()) {
-//            return new ItemList(); // Return an empty inventory if file doesn't exist
-//        }
-//
-//        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file))) {
-//            return (ItemList) ois.readObject();
-//        } catch (IOException | ClassNotFoundException e) {
-//            System.out.println("Error loading player inventory: " + e.getMessage());
-//            return null;
-//        }
-//    }
     
     private ItemList loadPlayerInventory() {
        try (Connection conn = connect()) {
