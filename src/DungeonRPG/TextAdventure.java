@@ -44,7 +44,11 @@ public class TextAdventure implements java.io.Serializable {
     public Player getPlayer() {
         return this.player;
     }
-
+    
+    /*
+     * Returns the PlayerManager object
+     * @return the PlayerManager object
+    */
     public PlayerManager getPlayerManager() {
         return this.playerManager;
     }
