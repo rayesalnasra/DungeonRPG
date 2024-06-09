@@ -11,13 +11,31 @@ import java.sql.*;
  *
  * @author rayesa
  */
+
+/**
+ * The GameSaverLoader class handles the saving, loading, and deleting
+ * of game states for the DungeonRPG game. It interacts with a Derby
+ * database to persist game data.
+ */
 public class GameSaverLoader {
     
+    /**
+     * Establishes a connection to the Derby database.
+     * 
+     * @return a Connection object connected to the database
+     * @throws SQLException if a database access error occurs
+     */    
     private static Connection connect() throws SQLException {
+        // URL for connecting to the Derby database
         String url = "jdbc:derby:DungeonRPGDatabase;create=true"; // Adjust the URL as needed
         return DriverManager.getConnection(url);
     }
-    
+
+    /**
+     * Saves the current game state to the database.
+     * 
+     * @param game the TextAdventure game object to save
+     */
     public static void saveGame(TextAdventure game) {
         try (Connection conn = connect()) {
             conn.setAutoCommit(false);  // Start transaction
@@ -64,7 +82,12 @@ public class GameSaverLoader {
             System.out.println(e.getClass() + ": " + e.getMessage());
         }
     }
-    
+
+    /**
+     * Loads the game state from the database.
+     * 
+     * @return the loaded TextAdventure game object, or null if no saved game is found
+     */
     public static TextAdventure loadGame() {
         TextAdventure loadedGame = null;
         try (Connection conn = connect()) {
@@ -94,7 +117,12 @@ public class GameSaverLoader {
         }
         return loadedGame;
     }
-    
+
+    /**
+     * Checks if a game save exists in the database.
+     * 
+     * @return true if a game save exists, false otherwise
+     */
     public static boolean doesGameSaveExist() {
         boolean gameSaveExists = false;
         TextAdventure loadedGame = null;
@@ -126,7 +154,12 @@ public class GameSaverLoader {
         }
         return gameSaveExists;
     }
-    
+
+    /**
+     * Deletes the game save from the database.
+     * 
+     * @return true if the game save was deleted successfully, false otherwise
+     */
     public static boolean deleteGameSave() {
         try (Connection conn = connect()) {
             conn.setAutoCommit(false);  // Start transaction

@@ -16,11 +16,17 @@ import javax.swing.*;
  *
  * @author billg
  */
+
+/**
+ * GUI class for the Dungeon RPG game. Provides the main window and controls
+ * for interacting with the game.
+ * 
+ */
 public class GUI extends javax.swing.JFrame {
     private static TextAdventure game;
     
     /**
-     * Creates new form GUI
+     * Creates new form GUI and initializes game components.
      */
     public GUI() {
         initComponents();
@@ -39,11 +45,19 @@ public class GUI extends javax.swing.JFrame {
         
     }
     
+    /**
+     * Sets the game instance and updates the UI accordingly.
+     * 
+     * @param game The TextAdventure game instance to set.
+     */
     public void setGame(TextAdventure game) {
         this.game = game;
         exitInventoryActionPerformed(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, null));
     }
     
+    /**
+     * Handles the actions to perform when exiting the application.
+     */
     public void onExit(){
         quitGameActionPerformed(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, null));
     }
@@ -243,30 +257,33 @@ public class GUI extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    // Handles the action when the "Move North" button is clicked
     private void moveNorthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moveNorthActionPerformed
         // TODO add your handling code here:
         String gameOutput = game.runCommand("Move North");
         setTextArea(gameOutput);
     }//GEN-LAST:event_moveNorthActionPerformed
-
+    
+    // Handles the action when the "Move South" button is clicked
     private void moveSouthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moveSouthActionPerformed
         // TODO add your handling code here:
         String gameOutput = game.runCommand("Move South");
         setTextArea(gameOutput);
     }//GEN-LAST:event_moveSouthActionPerformed
 
+    // Handles the action when the "Move East" button is clicked
     private void moveEastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moveEastActionPerformed
         // TODO add your handling code here:
         String gameOutput = game.runCommand("Move East");
         setTextArea(gameOutput);
     }//GEN-LAST:event_moveEastActionPerformed
-
+    // Handles the action when the "Move West" button is clicked
     private void moveWestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moveWestActionPerformed
         // TODO add your handling code here:
         String gameOutput = game.runCommand("Move West");
         setTextArea(gameOutput);
     }//GEN-LAST:event_moveWestActionPerformed
-
+    // Handles the action when the "Check Inventory" button is clicked
     private void checkInventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkInventoryActionPerformed
         // TODO add your handling code here:
         String gameOutput = game.runCommand("Check Inventory");
@@ -280,7 +297,7 @@ public class GUI extends javax.swing.JFrame {
         moveSouth.setVisible(false);
         takeItem.setVisible(false);
     }//GEN-LAST:event_checkInventoryActionPerformed
-
+    // Handles the action when the "Drop Item" button is clicked
     private void dropItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dropItemActionPerformed
         // TODO add your handling code here:
         String input = JOptionPane.showInputDialog("What Item would you like to drop");
@@ -294,7 +311,7 @@ public class GUI extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, gameOutput, "Game Message", JOptionPane.INFORMATION_MESSAGE);
         checkInventoryActionPerformed(evt);
     }//GEN-LAST:event_dropItemActionPerformed
-
+    // Handles the action when the "Exit Inventory" button is clicked
     private void exitInventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitInventoryActionPerformed
         // TODO add your handling code here:
         String gameOutput = game.runCommand("Observe Area");
@@ -322,7 +339,7 @@ public class GUI extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, gameOutput, "Game Message", JOptionPane.INFORMATION_MESSAGE);
         exitInventoryActionPerformed(evt);
     }//GEN-LAST:event_takeItemActionPerformed
-
+    // Handles the action when the "Take Item" button is clicked
     private void quitGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitGameActionPerformed
         // TODO add your handling code here:
         String message = "Do you want to save the game before quitting?";
@@ -345,7 +362,7 @@ public class GUI extends javax.swing.JFrame {
             }
         });
     }//GEN-LAST:event_quitGameActionPerformed
-
+    // Handles the action when the "Quit Game" button is clicked
     private void loadGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadGameActionPerformed
         // TODO add your handling code here:
         // Check if a save file exists
@@ -370,7 +387,7 @@ public class GUI extends javax.swing.JFrame {
                     JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_loadGameActionPerformed
-
+    // Handles the action when the "Restart Game" button is clicked
     private void restartGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restartGameActionPerformed
         // TODO add your handling code here:
         boolean gameSaveExists = GameSaverLoader.doesGameSaveExist();
@@ -420,7 +437,7 @@ public class GUI extends javax.swing.JFrame {
         setTextArea(game.printIntroduction());
         exitInventoryActionPerformed(evt);
     }//GEN-LAST:event_restartGameActionPerformed
-
+    // Ask if the user wants to delete existing saves before restarting
     private void saveGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveGameActionPerformed
         // TODO add your handling code here:
         boolean gameSaveExists = GameSaverLoader.doesGameSaveExist();
@@ -438,7 +455,7 @@ public class GUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Game saved successfully!", "Game Message", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_saveGameActionPerformed
-    
+    // Updates the text area with the given output
     private void setTextArea(String output) {
         textArea.setText(output);
     }
