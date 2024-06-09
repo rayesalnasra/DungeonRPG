@@ -153,7 +153,7 @@ public class InputParser implements java.io.Serializable {
         String message = "";
 
         if (userInputCommandList.size() != 2) {
-            message = "Only 2 word commands are allowed";
+            message = "Only 1 word inputs are allowed";
             this.userInputCommandList.clear();
         }
 
@@ -182,9 +182,7 @@ public class InputParser implements java.io.Serializable {
         }
 
         if (!validTargets.containsKey(target)) {
-            message = target + " is not a valid target. "
-                    + "Valid targets are: north, south, west, east, area, "
-                    + "inventory, game, as well as any items in the area";
+            message = target + "this item doesn't seem to exist";
         }
 
         if (validCommands.containsKey(command) && validTargets.containsKey(target)) {
