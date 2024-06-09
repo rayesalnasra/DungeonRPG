@@ -45,6 +45,9 @@ public class TextAdventure implements java.io.Serializable {
         return this.player;
     }
 
+    public PlayerManager getPlayerManager() {
+        return this.playerManager;
+    }
     /*
      * Runs the given user command and assigns the command processing to
      * the InputParser

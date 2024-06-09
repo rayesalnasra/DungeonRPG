@@ -134,6 +134,11 @@ public class PlayerManager implements Serializable {
     public void loadInventory() {
         this.playerInventory = loadPlayerInventory();
     }
+    
+    public void resetInventory() {
+        this.playerInventory = new ItemList();
+        savePlayerInventory(); // Save the empty inventory to the database
+    }
 
     // Moves an item from one ItemList to another
     private void moveItemTo(Object item, ItemList sourceList, ItemList destinationList) {
